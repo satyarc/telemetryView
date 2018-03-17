@@ -14,10 +14,7 @@ app.locals.ENV_DEVELOPMENT = env === 'development';
 // view engine setup
 
 app.use(express.static(__dirname + '/views'));
-//app.set('views', path.join(__dirname, 'views'));
-//app.set('view engine', 'jade');
 
-// app.use(favicon(__dirname + '/public/img/favicon.ico'));
 app.use(logger('dev'));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({
@@ -60,6 +57,12 @@ app.use(function(err, req, res, next) {
         error: {},
         title: 'error'
     });
+});
+
+app.set('port', process.env.PORT || 3010);
+
+var server = app.listen(app.get('port'), function() {
+  console.log('Express server listening on port ' + server.address().port);
 });
 
 
