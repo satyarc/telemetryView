@@ -2,7 +2,6 @@
 	<div *ngFor="let device of devices">
 		<ngb-panel title="{{device}}">
 		    <ng-template ngbPanelContent>
-		      <p>{{device}}</p>
 		      <app-top-menus [device]="device"></app-top-menus>
 		    </ng-template>
   		</ngb-panel>
