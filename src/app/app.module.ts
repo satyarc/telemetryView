@@ -7,6 +7,7 @@ import { TopMenusComponent } from './top-menus/top-menus.component';
 import { SideMenusComponent } from './side-menus/side-menus.component';
 import { ContentComponent } from './content/content.component';
 import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
+import { HttpModule } from '@angular/http';
 
 
 
@@ -25,7 +26,8 @@ import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
     MatCardModule,
     MatToolbarModule,
     MatIconModule,
-    NgbModule.forRoot()
+    NgbModule.forRoot(),
+    HttpModule
   ],
   providers: [],
   bootstrap: [AppComponent,

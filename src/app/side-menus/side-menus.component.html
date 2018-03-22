@@ -1,8 +1,8 @@
 <ngb-accordion #acc="ngbAccordion" activeIds="ngb-panel-0">
 	<div *ngFor="let device of devices">
-		<ngb-panel title="{{device}}">
+		<ngb-panel title="{{device.name}}">
 		    <ng-template ngbPanelContent>
-		      <app-top-menus [device]="device"></app-top-menus>
+		      <app-top-menus [name]="device.name"></app-top-menus>
 		    </ng-template>
   		</ngb-panel>
 	</div>

@@ -2,7 +2,7 @@
 	<div *ngFor="let view of views">
 		<ngb-tab title="{{view}}">
 		    <ng-template ngbTabContent>
-		      <app-content [view]="view" [device]="device"></app-content>
+		      <app-content [view]="view" [name]="name"></app-content>
 		    </ng-template>
   		</ngb-tab>
 	</div>
