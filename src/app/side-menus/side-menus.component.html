@@ -1,3 +1,4 @@
+<!--  
 <ngb-accordion #acc="ngbAccordion" activeIds="ngb-panel-0">
 	<div *ngFor="let device of devices">
 		<ngb-panel title="{{device.name}}">
@@ -7,3 +8,17 @@
   		</ngb-panel>
 	</div>
 </ngb-accordion>
+-->
+
+<div *ngFor="let troubleCode of troubleCodes">
+	<button (click)="showtroubleDetails($event)">{{troubleCode.name}}</button>
+</div>
+
+<!-- 
+<select [(ngModel)]="chosentroubleCode" name="troubleCode">
+        <option *ngFor="let troubleCode of troubleCodes">
+          <button (click)="showtroubleDetails($event)">"{{troubleCode.name}}"</button>
+        </option>
+</select>
+-->
+      

@@ -1,2 +1,26 @@
-<h1>{{title}}</h1>
+<body>
+	<table border = "1px" >
+		<tr>
+			<td>
+				<img src="assets\img\intellipredikt.jpg"  height = "65px" width = "65px">
+			</td>
+			<td>
+				<h1 align="center">Remote Diagnostics</h1>
+			</td>
+		</tr>
+		<tr>
+			<td>
+				<div *ngFor="let view of views">
+					<button class="btn" [ngClass]="{'btn-add': !clicked, 'btn-remove': clicked}" (click)="showView($event)"  (click)="clicked = true">{{view}}</button>
+					<p>
+				</div>
+			</td>
+			<td>
+				<div *ngIf="showView1">
+					<app-diagnotic-views></app-diagnotic-views>
+				</div>
+			</td>
+		</tr>
+	</table>
+</body>
 		  

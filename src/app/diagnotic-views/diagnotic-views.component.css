@@ -1,0 +1,13 @@
+table{
+  table-layout: fixed;
+  border: 20px solid grey;
+  border-collapse: collapse;
+  padding: 5px;
+  width:100%;
+}
+
+td{
+  border: 20px solid grey;
+  border-collapse: collapse;
+  padding: 5px;
+}

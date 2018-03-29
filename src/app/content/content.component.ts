@@ -4,11 +4,12 @@ import 'rxjs/Rx';
 
 @Component({
   selector: 'app-content',
-  inputs: ['view: view','deviceName: name'],
   templateUrl: './content.component.html',
   styleUrls: ['./content.component.css']
 })
-export class ContentComponent implements OnInit {
+
+
+export  class ContentComponent implements OnInit {
     
     selectedDevice : Object;
     constructor() {
@@ -17,4 +18,8 @@ export class ContentComponent implements OnInit {
           
       }
 
+      troubleCodeName :any;
+      showtroubleDetails(troubleCodeName){
+          this.troubleCodeName = troubleCodeName;
+      }
 }
