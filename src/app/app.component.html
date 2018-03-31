@@ -2,7 +2,7 @@
 	<table border = "1px" >
 		<tr>
 			<td>
-				<img src="assets\img\intellipredikt.jpg"  height = "65px" width = "65px">
+				<img src="assets\img\Intellipredikt.jpg"  height = "60px" width = "220px">
 			</td>
 			<td>
 				<h1 align="center">Remote Diagnostics</h1>
@@ -10,15 +10,29 @@
 		</tr>
 		<tr>
 			<td>
-				<div *ngFor="let view of views">
-					<button class="btn" [ngClass]="{'btn-add': !clicked, 'btn-remove': clicked}" (click)="showView($event)"  (click)="clicked = true">{{view}}</button>
-					<p>
+				<div>
+					<button [ngClass]="[bntStyle1]"  (click)="showView1($event)">View 1</button>					
+				</div>
+				<p>
+				<div>
+					<button [ngClass]="[bntStyle2]"  (click)="showView2($event)">View 2</button>					
+				</div>
+				<p>
+				<div>
+					<button [ngClass]="[bntStyle3]" (click)="showView3($event)">View 3</button>					
+				</div>
+				<p>
+				<div>
+					<button [ngClass]="[bntStyle4]" (click)="showView4($event)">View 4</button>					
 				</div>
 			</td>
 			<td>
-				<div *ngIf="showView1">
+				<div *ngIf="view1;else other_content">
 					<app-diagnotic-views></app-diagnotic-views>
 				</div>
+				<ng-template #other_content>
+					<textarea rows="21" cols="160"></textarea>
+				</ng-template>
 			</td>
 		</tr>
 	</table>

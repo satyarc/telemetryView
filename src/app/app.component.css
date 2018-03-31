@@ -1,3 +1,37 @@
+table{
+  border: 10px #ff0080;
+  border-collapse: collapse;
+  padding: 5px;
+  width:100%;
+}
+
+td{
+  border: 10px #ff0080;
+  border-collapse: collapse;
+  padding: 5px;
+}
+
+h1{
+	color:#ff0080;
+	
+}
+
+button{
+	color : #fff7fb;
+	background-color:#800080;
+}
+
+.btn-default {
+  color: #fff7fb;
+  background-color: #800080;
+
+}
+
+.btn-clicked {
+  color: #800080;
+  background-color: #fff7fb;
+}
+
 .default{
 	background:skyblue;
 }

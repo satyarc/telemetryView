@@ -2,6 +2,8 @@
 	<tr>
 		<td>
 			<h6>General Status </h6>
+			<img src="assets\img\intellipredikt1.jpg"  height = "60px" width = "60px">
+			<p>
 			Distance 	: {{devicedetails.general.distance}}<p>
 			Duration	: {{devicedetails.general.duration}}
 		</td>
@@ -14,11 +16,15 @@
 			<h6>Trouble code (s)</h6>
 			<div *ngFor="let troubleCode of devicedetails.troubleCodes">
 				<button class="btn" [ngClass]="{'btn-add': !clicked, 'btn-remove': clicked}" (click)="showtroubleDetails($event)"  (click)="clicked = true">{{troubleCode.code}}</button>
+				<p>
 			</div>
 		</td>
 		<td>
 			<h6>Description</h6>
-			{{selectedTroubleObject.details.description}}
+			<textarea rows="10" cols="60">
+ 				{{selectedTroubleObject.details.description}}
+			</textarea>
+			
 		</td>
 	</tr>
 </table>

@@ -7,7 +7,16 @@ table{
 }
 
 td{
-  border: 20px solid grey;
+  border: 20px solid #e9e7fe;
   border-collapse: collapse;
   padding: 5px;
+}
+
+h6{
+	color :#800080;
+}
+
+button{
+	color : #800080;
+	background-color:#e9e7fe;
 }
