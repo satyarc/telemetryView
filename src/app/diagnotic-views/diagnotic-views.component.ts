@@ -11,7 +11,7 @@ export class DiagnoticViewsComponent implements OnInit {
 
     devicedetails  : any;
     constructor(private http:Http) {
-        this.http.get('http://169.44.138.58:3011/device')
+        this.http.get('http://localhost:3011/device')
         .map(response => response.json())
         .subscribe(res => this.devicedetails = res);
     }
@@ -22,6 +22,7 @@ export class DiagnoticViewsComponent implements OnInit {
       selectedCode : any;
       selectedTroubleObject : any;
       
+          
       showtroubleDetails(event){
 
           console.log(event.path[0].innerText);

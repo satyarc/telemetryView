@@ -1,18 +1,19 @@
 <table border = "1px" cellspacing="20">
 	<tr>
-		<td>
+		<td width = 30%>
 			<h6>General Status </h6>
 			<img src="assets\img\intellipredikt1.jpg"  height = "60px" width = "60px">
-			<p>
-			Distance 	: {{devicedetails.general.distance}}<p>
+			<h6>
+			Distance 	: {{devicedetails.general.distance}}
 			Duration	: {{devicedetails.general.duration}}
+			</h6>
 		</td>
-		<td>
-			<app-monitored-tests [troubleObject] = "selectedTroubleObject"></app-monitored-tests>
+		<td >
+			<app-monitored-tests [monitoredTests] = "devicedetails.monitoredTests"></app-monitored-tests>
 		</td>
 	</tr>
 	<tr>
-		<td>
+		<td width = 30%>
 			<h6>Trouble code (s)</h6>
 			<div *ngFor="let troubleCode of devicedetails.troubleCodes">
 				<button class="btn" [ngClass]="{'btn-add': !clicked, 'btn-remove': clicked}" (click)="showtroubleDetails($event)"  (click)="clicked = true">{{troubleCode.code}}</button>
@@ -21,8 +22,9 @@
 		</td>
 		<td>
 			<h6>Description</h6>
-			<textarea rows="10" cols="60">
- 				{{selectedTroubleObject.details.description}}
+			<h6>Trouble code : {{selectedCode}}</h6>
+			<textarea rows="10" cols="90">
+ 				{{selectedTroubleObject.description}}
 			</textarea>
 			
 		</td>
