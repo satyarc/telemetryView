@@ -1,32 +1,70 @@
 <table border = "1px" cellspacing="20">
 	<tr>
 		<td width = 30%>
-			<h6>General Status </h6>
-			<img src="assets\img\intellipredikt1.jpg"  height = "60px" width = "60px">
-			<h6>
-			Distance 	: {{devicedetails.general.distance}}
-			Duration	: {{devicedetails.general.duration}}
-			</h6>
+			<table>
+				<tr>
+					<td>
+						<h6 align="center"><b>General Status </b></h6>
+					</td>
+				</tr>
+				<tr>
+					<td>
+						<img src="assets\img\intellipredikt1.jpg"  height = "60px" width = "60px">
+					</td>
+				</tr>
+				<tr>
+					<td>
+						Distance 	: {{devicedetails.general.distance}}
+					</td>
+				</tr>
+				<tr>
+					<td>
+						Duration	: {{devicedetails.general.duration}}
+					</td>
+				</tr>
+			</table>
 		</td>
 		<td >
 			<app-monitored-tests [monitoredTests] = "devicedetails.monitoredTests"></app-monitored-tests>
 		</td>
 	</tr>
 	<tr>
-		<td width = 30%>
-			<h6>Trouble code (s)</h6>
-			<div *ngFor="let troubleCode of devicedetails.troubleCodes">
-				<button class="btn" [ngClass]="{'btn-add': !clicked, 'btn-remove': clicked}" (click)="showtroubleDetails($event)"  (click)="clicked = true">{{troubleCode.code}}</button>
-				<p>
+		<td width = 30% >
+			<div>
+			<table>
+				<tr>
+					<td>
+						<h6 align="center"><b>Trouble code (s)</b></h6>
+					</td>
+				</tr>
+				<tr  *ngFor="let troubleCode of devicedetails.troubleCodes">
+					<td>
+						<button class="btn" [ngClass]="{'btn-add': !clicked, 'btn-remove': clicked}" (click)="showtroubleDetails($event)"  (click)="clicked = true">{{troubleCode.code}}</button>
+					</td>
+				</tr>
+			</table>
 			</div>
 		</td>
 		<td>
-			<h6>Description</h6>
-			<h6>Trouble code : {{selectedCode}}</h6>
-			<textarea rows="10" cols="90">
- 				{{selectedTroubleObject.description}}
-			</textarea>
-			
+			<table>
+				<tr>
+					<td>
+						<h6 align="center"><b>Description</b></h6>
+					</td>
+				</tr>
+				<tr>
+					<td>
+						<h6>Trouble code : {{selectedCode}}</h6>
+					</td>
+				</tr>
+				<tr>
+					<td>
+						<textarea rows="7" cols="90">
+ 							{{selectedTroubleObject.description}}
+						</textarea>
+					</td>
+				</tr>
+			</table>
 		</td>
 	</tr>
 </table>

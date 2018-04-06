@@ -1,23 +1,32 @@
 table{
   table-layout: fixed;
-  border: 20px solid grey;
+  border: 5px solid grey;
   border-collapse: collapse;
   padding: 5px;
   width:100%;
-  background-color:#c4dff7;
+  background-color:#ffffff;
+  
 }
 
 td{
-  border: 20px solid #f5f4ff;
+  border: 0px solid #e4e4f1;
   border-collapse: collapse;
   padding: 5px;
+  border-radius: 12px;
 }
 
 h6{
 	color :#1f85d8;
 }
 
+div{
+	overflow-y: scroll;
+	height:250px;
+}
+
 button{
 	color : #1f85d8;
 	background-color:#e9e7fe;
+	border-radius: 12px;
+	width:150px;
 }

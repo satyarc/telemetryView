@@ -1,8 +1,14 @@
 table{
   table-layout: fixed;
   width:100%;
+  border: 5px solid grey;
+}
+
+td{
+	border: 1px solid grey;
 }
 
 h6{
+	align:center;
 	color :#1f85d8;
 }

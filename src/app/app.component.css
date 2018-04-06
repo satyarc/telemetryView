@@ -27,6 +27,7 @@ button{
   background-color: #e9e7fe;
 	height:60px;
 	width:220px;
+	border-radius: 12px;
 }
 
 .btn-clicked {
@@ -34,6 +35,7 @@ button{
   background-color: #1f85d8;
   	height:60px;
 	width:220px;
+	border-radius: 12px;
 }
 
 .default{
