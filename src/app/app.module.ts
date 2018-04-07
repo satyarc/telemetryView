@@ -3,11 +3,10 @@ import { NgModule } from '@angular/core';
 import { AppComponent } from './app.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MatButtonModule, MatCardModule, MatMenuModule, MatToolbarModule, MatIconModule } from '@angular/material';
-import { SideMenusComponent } from './side-menus/side-menus.component';
 import { ContentComponent} from './content/content.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
-import { HttpModule } from '@angular/http';
+import { HttpClientModule,HttpClient,HttpHeaders,HttpParams } from '@angular/common/http';
 import { DiagnoticViewsComponent } from './diagnotic-views/diagnotic-views.component';
 import { MonitoredTestsComponent } from './monitored-tests/monitored-tests.component';
 
@@ -23,7 +22,7 @@ import { MonitoredTestsComponent } from './monitored-tests/monitored-tests.compo
     BrowserModule,
     BrowserAnimationsModule,
     NgbModule.forRoot(),
-    HttpModule
+    HttpClientModule
   ],
   providers: [],
   bootstrap: [AppComponent
