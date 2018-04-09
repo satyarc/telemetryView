@@ -9,6 +9,9 @@ import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
 import { HttpClientModule,HttpClient,HttpHeaders,HttpParams } from '@angular/common/http';
 import { DiagnoticViewsComponent } from './diagnotic-views/diagnotic-views.component';
 import { MonitoredTestsComponent } from './monitored-tests/monitored-tests.component';
+import { GeneralComponent } from './general/general.component';
+import { DescriptionComponent } from './description/description.component';
+import { PcodesComponent } from './pcodes/pcodes.component';
 
 
 
@@ -16,7 +19,10 @@ import { MonitoredTestsComponent } from './monitored-tests/monitored-tests.compo
   declarations: [
     AppComponent,
     DiagnoticViewsComponent,
-    MonitoredTestsComponent
+    MonitoredTestsComponent,
+    GeneralComponent,
+    DescriptionComponent,
+    PcodesComponent
   ],
   imports: [
     BrowserModule,

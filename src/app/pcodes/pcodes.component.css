@@ -1,0 +1,27 @@
+table{
+  table-layout: fixed;
+  width:100%;
+  border: 0px solid grey;
+  height:250px
+}
+
+td{
+	border: 0px solid grey;
+}
+
+h6{
+	align:center;
+	color :#1f85d8;
+}
+
+button{
+	color : #1f85d8;
+	background-color:#e9e7fe;
+	border-radius: 12px;
+	width:180px;
+}
+
+div{
+	height : 250px;
+	overflow-y: scroll;
+}

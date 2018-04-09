@@ -1,15 +1,14 @@
 table{
   table-layout: fixed;
-  border: 5px solid grey;
+  border: 1px solid grey;
   border-collapse: collapse;
   padding: 5px;
-  width:100%;
   background-color:#ffffff;
   
 }
 
 td{
-  border: 0px solid #e4e4f1;
+  border: 10px solid #e9e7fe;
   border-collapse: collapse;
   padding: 5px;
   border-radius: 12px;
@@ -20,12 +19,7 @@ h6{
 }
 
 p{
-	height:400px;
+	height:200px;
 }
 
-button{
-	color : #1f85d8;
-	background-color:#e9e7fe;
-	border-radius: 12px;
-	width:170px;
-}
+

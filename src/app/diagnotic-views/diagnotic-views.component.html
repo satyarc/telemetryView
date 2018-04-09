@@ -1,43 +1,18 @@
 <table border = "1px" cellspacing="20">
 	<tr>
-		<td width = 20% >
-			<div>
-			<table>
-				<tr>
-					<td>
-						<h6 align="center"><b>Trouble code (s)</b></h6>
-					</td>
-				</tr>
-				  
-				<tr  *ngFor="let pCode of pCodes">
-					<td>
-						<button class="btn" [ngClass]="{'btn-add': !clicked, 'btn-remove': clicked}" (click)="showpcodeDetails($event)"  (click)="clicked = true">{{pCode}}</button>
-					</td>
-				</tr>
-				
-			</table>
-			</div>
+		<td width = 20%>
+			<app-general></app-general>
 		</td>
+		<td >
+			<!--  <app-monitored-tests [monitoredTests] = "devicedetails.monitoredTests"></app-monitored-tests> -->
+			<app-monitored-tests height = "100px"></app-monitored-tests>
+		</td>
+	</tr>
+</table>
+<table>
+	<tr>
 		<td>
-			<table>
-				<tr>
-					<td>
-						<h6 align="center"><b>Description</b></h6>
-					</td>
-				</tr>
-				<tr>
-					<td>
-						<h6>Trouble code :  {{selectedCode}}  </h6>
-					</td>
-				</tr>
-				<tr>
-					<td>
-						<p>
- 							{{troubleDescription}}
-						</p>
-					</td>
-				</tr>
-			</table>
+			<app-pcodes></app-pcodes>
 		</td>
 	</tr>
 </table>
