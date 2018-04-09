@@ -4,7 +4,7 @@
 			<h6 align="center"><b>Trouble code (s)</b></h6>
 		</td>
 		<td>
-			<h6 align="center"><b>Description</b></h6>
+			<h6 align="center"> Selected code : {{selectedCode}}</h6>
 		</td>
 	</tr>
 	<tr>
@@ -14,13 +14,16 @@
 				<tr  *ngFor="let pCode of pCodes">
 					<td>
 						<button class="btn" [ngClass]="{'btn-add': !clicked, 'btn-remove': clicked}" (click)="showpcodeDetails($event)"  (click)="clicked = true">{{pCode}}</button>
+						<p></p>
 					</td>
 				</tr>
 			</table>
 		</div>
 		</td>
 		<td>
-			<app-description [descSegments] = "troubleDescriptionSegments" [pCode] = "selectedCode"></app-description>
+			<div>
+				<app-description [descSegments] = "troubleDescriptionSegments" [pCode] = "selectedCode"></app-description>
+			</div>
 		</td>	
 	</tr>
 </table>
