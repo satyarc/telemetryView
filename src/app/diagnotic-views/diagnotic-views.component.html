@@ -1,48 +1,6 @@
 <table border = "1px" cellspacing="20">
 	<tr>
-		<td width = 40%>
-			<table>
-				<tr>
-					<td>
-						<h6 align="left"><b>General Status </b></h6>
-					</td>
-					<td>
-						<img src="assets\img\intellipredikt1.jpg"  height = "60px" width = "60px">
-					</td>
-				</tr>
-				<tr>
-					<td><h6>Curr_Time_ts</h6></td>
-					<td><h6>Curr_Time_value</h6></td>
-				</tr>
-				<tr>
-					<td>
-						<div id = "Curr_Time_ts"></div>
-					</td>
-					<td>
-						<div id = "Curr_Time_value"></div>
-					</td>
-				</tr>
-				<tr>
-					<td><h6>GSM_Packet_Cnt_ts</h6></td>
-					<td><h6>GSM_Packet_Cnt_value</h6></td>
-				</tr>
-				<tr>
-					<td>
-						<div id = "GSM_Packet_Cnt_ts"></div>
-					</td>
-					<td>
-						<div id = "GSM_Packet_Cnt_value"></div>
-					</td>
-				</tr>
-			</table>
-		</td>
-		<td >
-			<!--  <app-monitored-tests [monitoredTests] = "devicedetails.monitoredTests"></app-monitored-tests> -->
-			<app-monitored-tests></app-monitored-tests>
-		</td>
-	</tr>
-	<tr>
-		<td width = 30% >
+		<td width = 20% >
 			<div>
 			<table>
 				<tr>
@@ -50,11 +8,13 @@
 						<h6 align="center"><b>Trouble code (s)</b></h6>
 					</td>
 				</tr>
-				<tr  *ngFor="let troubleCode of devicedetails.troubleCodes">
+				  
+				<tr  *ngFor="let pCode of pCodes">
 					<td>
-						<button class="btn" [ngClass]="{'btn-add': !clicked, 'btn-remove': clicked}" (click)="showtroubleDetails($event)"  (click)="clicked = true">{{troubleCode.code}}</button>
+						<button class="btn" [ngClass]="{'btn-add': !clicked, 'btn-remove': clicked}" (click)="showpcodeDetails($event)"  (click)="clicked = true">{{pCode}}</button>
 					</td>
 				</tr>
+				
 			</table>
 			</div>
 		</td>
@@ -67,14 +27,14 @@
 				</tr>
 				<tr>
 					<td>
-						<h6>Trouble code : {{selectedCode}}</h6>
+						<h6>Trouble code :  {{selectedCode}}  </h6>
 					</td>
 				</tr>
 				<tr>
 					<td>
-						<textarea rows="5" cols="75">
- 							{{selectedTroubleObject.description}}
-						</textarea>
+						<p>
+ 							{{troubleDescription}}
+						</p>
 					</td>
 				</tr>
 			</table>
