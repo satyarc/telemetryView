@@ -1,4 +1,13 @@
 h6{
 	color :#1f85d8;
 	align:center;
+	background-color:#bcc1e7;
+}
+
+table{
+	border: 0px solid grey;
+}
+
+td{
+	border: 1px #000000;
 }
