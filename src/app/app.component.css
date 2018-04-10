@@ -1,16 +1,16 @@
 table{
-  border: 1px #000000;
-  border-collapse: collapse;
-  padding: 5px;
-  width:100%;
-  background-color:#bcc1e7;
-  height:620px;
+	  border: 1px #000000;
+	  border-collapse: collapse;
+	  padding: 5px;
+	  width:100%;
+	  background-color:#bcc1e7;
+	  height:620px;
 }
 
 td{
-  border: 1px solid grey;
-  border-collapse: collapse;
-  padding: 5px;
+  	border: 1px solid grey;
+  	border-collapse: collapse;
+  	padding: 5px;
 }
 
 h1{
@@ -23,20 +23,20 @@ button{
 }
 
 .btn-default {
-  color: #1f85d8;
-  background-color: #e9e7fe;
+  	color: #1f85d8;
+  	background-color: #e9e7fe;
 	height:60px;
 	width:220px;
-	border-radius: 12px;
+	border-radius: 3px;
 }
 
 .btn-clicked {
 	border: 3px solid #1f85d8;
-  color: #1f85d8;
-  background-color: #e9e7fe;
+  	color: #1f85d8;
+  	background-color: #e9e7fe;
   	height:60px;
 	width:220px;
-	border-radius: 12px;
+	border-radius: 3px;
 }
 
 .default{

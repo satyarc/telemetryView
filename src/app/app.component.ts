@@ -10,10 +10,11 @@ export class AppComponent {
   title = 'Telemetry View';
   
   constructor() {
-      this.bntStyle1  = 'btn-clicked';
-      this.bntStyle2  = 'btn-default';
-      this.bntStyle3  = 'btn-default';
-      this.bntStyle4  = 'btn-default';
+      this.btnView1 = 'btn-clicked';
+      this.btnVehicleData = 'btn-default';
+      this.btnPerformanceBehaviour = 'btn-default';
+      this.btnVehicleHealth = 'btn-default';
+      this.btnCrashReport = 'btn-default';
   }
   
   ngOnInit() {
@@ -22,57 +23,80 @@ export class AppComponent {
   
   selectedView :any;
   view1 = true;
-  view2 = false;
-  view3 = false;
-  view4 = false;
+  viewVehicleData = false;
+  viewPerformanceBehaviour = false;
+  viewVehicleHealth = false;
+  viewCrashReport = false;
   
-  bntStyle1: string;
-  bntStyle2: string;
-  bntStyle3: string;
-  bntStyle4: string;
+  btnView1: string;
+  btnVehicleData: string;
+  btnPerformanceBehaviour: string;
+  btnVehicleHealth: string;
+  btnCrashReport: string;
   
   clickedFlag : any;
   showView1(event){
-      this.bntStyle1 = 'btn-clicked';
-      this.bntStyle2 = 'btn-default';
-      this.bntStyle3 = 'btn-default';
-      this.bntStyle4 = 'btn-default';
+      this.btnView1 = 'btn-clicked';
+      this.btnVehicleData = 'btn-default';
+      this.btnPerformanceBehaviour = 'btn-default';
+      this.btnVehicleHealth = 'btn-default';
+      this.btnCrashReport = 'btn-default';
       this.view1 = true;
-      this.view2 = false;
-      this.view3 = false;
-      this.view4 = false;
+      this.viewVehicleData = false;
+      this.viewPerformanceBehaviour = false;
+      this.viewVehicleHealth = false;
+      this.viewCrashReport = false;
   }
   
-  showView2(event){
-      this.bntStyle1 = 'btn-default';
-      this.bntStyle2 = 'btn-clicked';
-      this.bntStyle3 = 'btn-default';
-      this.bntStyle4 = 'btn-default';
+  showViewVehicleData(event){
+      this.btnView1 = 'btn-default';
+      this.btnVehicleData = 'btn-clicked';
+      this.btnPerformanceBehaviour = 'btn-default';
+      this.btnVehicleHealth = 'btn-default';
+      this.btnCrashReport = 'btn-default';
       this.view1 = false;
-      this.view2 = true;
-      this.view3 = false;
-      this.view4 = false;
+      this.viewVehicleData = true;
+      this.viewPerformanceBehaviour = false;
+      this.viewVehicleHealth = false;
+      this.viewCrashReport = false;
   }
   
-  showView3(event){
-      this.bntStyle1 = 'btn-default';
-      this.bntStyle2 = 'btn-default';
-      this.bntStyle3 = 'btn-clicked';
-      this.bntStyle4 = 'btn-default';
+  showPerformanceBehaviour(event){
+      this.btnView1 = 'btn-default';
+      this.btnVehicleData = 'btn-default';
+      this.btnPerformanceBehaviour = 'btn-clicked';
+      this.btnVehicleHealth = 'btn-default';
+      this.btnCrashReport = 'btn-default';
       this.view1 = false;
-      this.view2 = false;
-      this.view3 = true;
-      this.view4 = false;
+      this.viewVehicleData = false;
+      this.viewPerformanceBehaviour = true;
+      this.viewVehicleHealth = false;
+      this.viewCrashReport = false;
   }
   
-  showView4(event){
-      this.bntStyle1 = 'btn-default';
-      this.bntStyle2 = 'btn-default';
-      this.bntStyle3 = 'btn-default';
-      this.bntStyle4 = 'btn-clicked';
+  showVehicleHealth(event){
+      this.btnView1 = 'btn-default';
+      this.btnVehicleData = 'btn-default';
+      this.btnPerformanceBehaviour = 'btn-default';
+      this.btnVehicleHealth = 'btn-clicked';
+      this.btnCrashReport = 'btn-default';
       this.view1 = false;
-      this.view2 = false;
-      this.view3 = false;
-      this.view4 = true;
+      this.viewVehicleData = false;
+      this.viewPerformanceBehaviour = false;
+      this.viewVehicleHealth = true;
+      this.viewCrashReport = false;
+  }
+  
+  showCrashReport(event){
+      this.btnView1 = 'btn-default';
+      this.btnVehicleData = 'btn-default';
+      this.btnPerformanceBehaviour = 'btn-default';
+      this.btnVehicleHealth = 'btn-default';
+      this.btnCrashReport = 'btn-clicked';
+      this.view1 = false;
+      this.viewVehicleData = false;
+      this.viewPerformanceBehaviour = false;
+      this.viewVehicleHealth = false;
+      this.viewCrashReport = true;
   }
 }

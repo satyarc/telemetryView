@@ -11,6 +11,10 @@ import { MonitoredTestsComponent } from './monitored-tests/monitored-tests.compo
 import { GeneralComponent } from './general/general.component';
 import { DescriptionComponent } from './description/description.component';
 import { PcodesComponent } from './pcodes/pcodes.component';
+import { VehicleDataComponent } from './vehicle-data/vehicle-data.component';
+import { PerformanceBehaviourComponent } from './performance-behaviour/performance-behaviour.component';
+import { VehicleHealthComponent } from './vehicle-health/vehicle-health.component';
+import { CrashReportComponent } from './crash-report/crash-report.component';
 
 
 
@@ -21,7 +25,11 @@ import { PcodesComponent } from './pcodes/pcodes.component';
     MonitoredTestsComponent,
     GeneralComponent,
     DescriptionComponent,
-    PcodesComponent
+    PcodesComponent,
+    VehicleDataComponent,
+    PerformanceBehaviourComponent,
+    VehicleHealthComponent,
+    CrashReportComponent
   ],
   imports: [
     BrowserModule,
