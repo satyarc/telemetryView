@@ -11,8 +11,6 @@ import { RequestOptions } from "@angular/http/http";
 })
 export class PcodesComponent implements OnInit {
 
-
-
   ngOnInit() {
   }
   

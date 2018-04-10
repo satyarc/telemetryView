@@ -1,9 +1,11 @@
-table{
+/*table{
   table-layout: fixed;
   width:100%;
-  border: 1px solid grey;
+
   background-color:#bcc1e7;
+  border:2px solid grey;
 }
+*/
 
 td{
 	border: 1px solid grey;

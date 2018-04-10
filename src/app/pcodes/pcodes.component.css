@@ -1,14 +1,15 @@
-table{
-  table-layout: fixed;
+/*table{
   width:100%;
-  
   height:250px;
   background-color:#bcc1e7;
+  border:2px solid grey;
 }
+*/
 
 td{
-	border: 1px solid grey;
+	border:0px #bcc1e7;
 }
+
 
 h6{
 	align:center;
@@ -19,10 +20,11 @@ button{
 	color : #1f85d8;
 	background-color:#e9e7fe;
 	border-radius: 12px;
-	width:180px;
+	width:230px;
 }
 
 div{
 	height : 250px;
 	overflow-y: scroll;
+	border:1px solid grey;
 }
