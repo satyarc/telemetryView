@@ -1,52 +1,74 @@
 <body>
-	<table border = "1px" >
-		<tr height="10%" >
-			<td width="18%">
-				<img src="assets\img\intellipredikt.png"  height = "60px" width = "220px">
-			</td>
+	<table>
+		<tr>
 			<td>
-				<h1 align="center">Remote Diagnostics</h1>
+				<table>
+					<tr>
+						<td width="18%">
+							<img src="assets\img\intellipredikt.png"  height = "60px" width = "220px">
+						</td>
+					</tr>
+				</table>
 			</td>
+			<td  width = 1%></td>
+			<td>
+				<table>
+					<tr>
+						<td>
+							<h1 align="center">Remote Diagnostics</h1>
+						</td>
+					</tr>
+				</table>
+			</td>
+			<td  width = 1%></td>
 		</tr>
+		<tr height="10px"></tr>
 		<tr>
 			<td width="18%">
-				<div>
-					<button [ngClass]="[btnView1]"  (click)="showView1($event)">Dashboard</button>					
-				</div>
-				<p>
-				<div>
-					<button [ngClass]="[btnVehicleData]"  (click)="showViewVehicleData($event)">Vehicle Data</button>					
-				</div>
-				<p>
-				<div>
-					<button [ngClass]="[btnPerformanceBehaviour]" (click)="showPerformanceBehaviour($event)">Driver Behaviour</button>					
-				</div>
-				<p>
-				<div>
-					<button [ngClass]="[btnVehicleHealth]" (click)="showVehicleHealth($event)">Vehicle Health</button>					
-				</div>
-				<p>
-				<div>
-					<button [ngClass]="[btnCrashReport]" (click)="showCrashReport($event)">Crash Report</button>					
-				</div>
+				<table>
+					<tr>
+						<td>
+							<button [ngClass]="[btnView1]"  (click)="showView1($event)">Dashboard</button>
+							<p></p>			
+							<button [ngClass]="[btnVehicleData]"  (click)="showViewVehicleData($event)">Vehicle Data</button>
+							<p></p>						
+							<button [ngClass]="[btnPerformanceBehaviour]" (click)="showPerformanceBehaviour($event)">Driver Behaviour</button>
+							<p></p>						
+							<button [ngClass]="[btnVehicleHealth]" (click)="showVehicleHealth($event)">Vehicle Health</button>
+							<p></p>						
+							<button [ngClass]="[btnCrashReport]" (click)="showCrashReport($event)">Crash Report</button>
+						</td>
+					</tr>
+				</table>					
 			</td>
+			<td  width = 1%></td>
 			<td>
-				<div *ngIf="view1">
-					<app-diagnotic-views></app-diagnotic-views>
-				</div>
-				<div *ngIf="viewVehicleData">
-					<app-vehicle-data></app-vehicle-data>
-				</div>
-				<div *ngIf="viewPerformanceBehaviour">
-					<app-driver-behaviour></app-driver-behaviour>
-				</div>
-				<div *ngIf="viewVehicleHealth">
-					<app-vehicle-health></app-vehicle-health>
-				</div>
-				<div *ngIf="viewCrashReport">
-					<app-crash-report></app-crash-report>
-				</div>
+				<table>
+					<tr>
+						<td>
+							<div *ngIf="view1">
+								<app-diagnotic-views></app-diagnotic-views>
+							</div>
+							<div *ngIf="viewVehicleData">
+								<app-vehicle-data></app-vehicle-data>
+							</div>
+							<p>
+							<div *ngIf="viewPerformanceBehaviour">
+								<app-driver-behaviour></app-driver-behaviour>
+							</div>
+							<p>
+							<div *ngIf="viewVehicleHealth">
+								<app-vehicle-health></app-vehicle-health>
+							</div>
+							<p>
+							<div *ngIf="viewCrashReport">
+								<app-crash-report></app-crash-report>
+							</div>
+						</td>
+					</tr>
+				</table>
 			</td>
+			<td  width = 1%></td>
 		</tr>
 	</table>
 </body>

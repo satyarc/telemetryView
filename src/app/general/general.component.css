@@ -12,10 +12,11 @@ table{
 }
 
 td{
-	border:3px #bcc1e7;
+	border:1px #bcc1e7;
+	height:10px;
 }
 
 div{
-	height : 270px;
-	border:3px solid grey;
+	height : 215px;
+	border:2px solid grey;
 }
