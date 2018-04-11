@@ -4,19 +4,28 @@ import { HttpHeaders } from '@angular/common/http';
 import 'rxjs/Rx';
 
 @Component({
-  selector: 'app-monitored-tests',
-  inputs: ['monitoredTests:monitoredTests'],
-  templateUrl: './monitored-tests.component.html',
-  styleUrls: ['./monitored-tests.component.css']
+  selector: 'app-driver-behaviour',
+  templateUrl: './driver-behaviour.component.html',
+  styleUrls: ['./driver-behaviour.component.css']
 })
-export class MonitoredTestsComponent implements OnInit {
+export class DriverBehaviourComponent implements OnInit {
 
 authToken : any;
 urlbase = "https://cors-anywhere.herokuapp.com/"+"http://119.81.217.94:8080/api/plugins/telemetry/DEVICE/544004b0-c850-11e7-89af-f34162121867/values/timeseries?keys=";
-parameters = "Vehicle_ECT," + "Bat_Volt_Sts," + "MIL_Status," + "No_Of_DTC_Prs";
+parameters =      "Swirving_Event_Cnt,"
+                + "Harsh_Accel_Cnt,"
+                + "Harsh_Breaking_Cnt,"
+                + "Long_Idling_Cnt,"
+                + "Short_Idling_Cnt,"
+                + "Harsh_Breaking_Cnt,"
+                + "Bat_Discon_Event_Cnt,"
+                + "Eng_Breaking_Event_Cnt,"
+                + "Eng_High_Rev_Cnt,"
+                + "Over_Speeding_Lvl1_Cnt,"
+                + "Over_Speeding_Lvl2_Cnt";
 thingsboardDeviceData : any;
 
-vehicleHealth = [];
+driverBehaviour = [];
 
 constructor(private http:HttpClient) {
     
@@ -41,7 +50,7 @@ constructor(private http:HttpClient) {
                         console.log(val.value);
                         //this.pCodes = val.value.split(',');
                         //console.log(this.pCodes);
-                        this.vehicleHealth.push({"key":key,"value":val.value});
+                        this.driverBehaviour.push({"key":key,"value":val.value});
                     });
                   });
             },

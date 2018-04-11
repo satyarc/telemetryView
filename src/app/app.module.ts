@@ -12,7 +12,7 @@ import { GeneralComponent } from './general/general.component';
 import { DescriptionComponent } from './description/description.component';
 import { PcodesComponent } from './pcodes/pcodes.component';
 import { VehicleDataComponent } from './vehicle-data/vehicle-data.component';
-import { PerformanceBehaviourComponent } from './performance-behaviour/performance-behaviour.component';
+import { DriverBehaviourComponent } from './driver-behaviour/driver-behaviour.component';
 import { VehicleHealthComponent } from './vehicle-health/vehicle-health.component';
 import { CrashReportComponent } from './crash-report/crash-report.component';
 
@@ -27,7 +27,7 @@ import { CrashReportComponent } from './crash-report/crash-report.component';
     DescriptionComponent,
     PcodesComponent,
     VehicleDataComponent,
-    PerformanceBehaviourComponent,
+    DriverBehaviourComponent,
     VehicleHealthComponent,
     CrashReportComponent
   ],

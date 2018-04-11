@@ -1,18 +1,31 @@
-<table border="3px" width="100%" height="180px">
-	<tr>
-		<td>
-			<h6 align="center"><b>Monitored Test</b></h6>
-		</td>
-	</tr>
-	<tr>
-		<td>
-			<table  width="100%">
-				<tr><td width="20%"><h6><b>Description</b></h6></td><td><h6 align="center"><b>Status</b></h6></td></tr>
-				<tr><td width="20%"><h6>Fuel System</h6></td><td><h6></h6></td></tr>
-				<tr><td width="20%"><h6>Catalyst</h6></td><td><h6></h6></td></tr>
-				<tr><td width="20%"><h6>components</h6></td><td><h6></h6></td></tr>
-				<tr><td width="20%"><h6>oxygen sensor</h6></td><td><h6></h6></td></tr>
-			</table>
-		</td>
-	</tr>
-</table>
+<div>
+	<table>
+		<tr>
+			<td>
+				<h6 align="center"><b>Vehicle Health</b></h6>
+			</td>
+		</tr>
+		<tr>
+			<td>
+				<table width="100%" height="180px">
+					<tr *ngFor="let item of vehicleHealth">
+						<td width="75%">
+							<h6><b>{{item.key}}</b></h6>
+						</td>
+						<td>
+							<h6>{{item.value}}</h6>
+						</td>
+					</tr>
+				</table>
+			</td>
+		</tr>
+	</table>
+</div>
+
+
+
+
+
+
+
+

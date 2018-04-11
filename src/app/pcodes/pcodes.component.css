@@ -20,11 +20,12 @@ button{
 	color : #1f85d8;
 	background-color:#e9e7fe;
 	border-radius: 12px;
-	width:230px;
+	width:100px;
+	align:center;
 }
 
 div{
 	height : 250px;
 	overflow-y: scroll;
-	border:1px solid grey;
+	border:3px solid grey;
 }

@@ -2,7 +2,7 @@
 	<table border = "1px" >
 		<tr height="10%" >
 			<td width="18%">
-				<img src="assets\img\intellipredikt.jpg"  height = "60px" width = "220px">
+				<img src="assets\img\intellipredikt.png"  height = "60px" width = "220px">
 			</td>
 			<td>
 				<h1 align="center">Remote Diagnostics</h1>
@@ -19,7 +19,7 @@
 				</div>
 				<p>
 				<div>
-					<button [ngClass]="[btnPerformanceBehaviour]" (click)="showPerformanceBehaviour($event)">Performance Behaviour</button>					
+					<button [ngClass]="[btnPerformanceBehaviour]" (click)="showPerformanceBehaviour($event)">Driver Behaviour</button>					
 				</div>
 				<p>
 				<div>
@@ -38,7 +38,7 @@
 					<app-vehicle-data></app-vehicle-data>
 				</div>
 				<div *ngIf="viewPerformanceBehaviour">
-					<app-performance-behaviour></app-performance-behaviour>
+					<app-driver-behaviour></app-driver-behaviour>
 				</div>
 				<div *ngIf="viewVehicleHealth">
 					<app-vehicle-health></app-vehicle-health>

@@ -2,23 +2,23 @@
 <div>
 <table  width="100%">
 <tr>
-	<th>Date</th>
-	<th>Time</th>
-	<th>Parameter</th>
-	<th>Value</th>
+	<th><b>Date</b></th>
+	<th><b>Time</b></th>
+	<th><b>Parameter</b></th>
+	<th><b>Value</b></th>
 </tr>
-<tr  *ngFor="let dataItem of vehicleData">
+<tr   *ngFor="let item of vehicleData">
 	<td>
-		{{dataItem}}
+		<h6>{{dateTime[0].value}}</h6>
 	</td>
 	<td>
-		{{dataItem}}
+		<h6>{{dateTime[1].value}}</h6>
 	</td>
 	<td>
-		{{dataItem}}
+		<h6>{{item.key}}</h6>
 	</td>
 	<td>
-		{{dataItem}}
+		<h6>{{item.value}}</h6>
 	</td>
 </tr>
 </table>

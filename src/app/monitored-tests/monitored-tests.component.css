@@ -1,17 +1,22 @@
-/*table{
+table{
   table-layout: fixed;
   width:100%;
 
   background-color:#bcc1e7;
-  border:2px solid grey;
+  
 }
-*/
+
 
 td{
-	border: 1px solid grey;
+	border: 1px #bcc1e7;
 }
 
 h6{
 	align:center;
 	color :#1f85d8;
+}
+
+div{
+	height : 300px;
+	border:3px solid grey;
 }

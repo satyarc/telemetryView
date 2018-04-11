@@ -3,6 +3,7 @@ import { HttpClient, HttpParams, HttpRequest} from '@angular/common/http';
 import { HttpHeaders } from '@angular/common/http';
 import 'rxjs/Rx';
 import { RequestOptions } from "@angular/http/http";
+import {Observable} from "rxjs/Observable";
 
 @Component({
   selector: 'app-pcodes',
@@ -12,6 +13,7 @@ import { RequestOptions } from "@angular/http/http";
 export class PcodesComponent implements OnInit {
 
   ngOnInit() {
+      //this.getPosts();
   }
   
   thingsboardDeviceData : any;
@@ -19,6 +21,8 @@ export class PcodesComponent implements OnInit {
   urlbase = "https://cors-anywhere.herokuapp.com/"+"http://119.81.217.94:8080/api/plugins/telemetry/DEVICE/544004b0-c850-11e7-89af-f34162121867/values/timeseries?keys=";
 
   pCodes :Array<any>;
+  
+ 
   constructor(private http:HttpClient) {
       let token : any;
       this.http.post('http://119.81.217.94:8080/api/auth/login', {'username':'tenant@thingsboard.org','password':'tenant'})
@@ -52,6 +56,41 @@ export class PcodesComponent implements OnInit {
       });
     }
   
+      /*
+    getPosts(): Observable<Array<any>>{
+          let token : any;
+          let pCodes : Array<any>;
+          this.http.post('http://119.81.217.94:8080/api/auth/login', {'username':'tenant@thingsboard.org','password':'tenant'})
+          .map(res => {
+              token = res;
+              this.authToken =  'Bearer ' + token.token; 
+              console.log(this.authToken);
+              let url = this.urlbase + "DTC_List";
+    
+              this.http.get(url,{headers:{'Content-Type':'application/json','X-Authorization': this.authToken}})
+              .map(res => {
+                  this.thingsboardDeviceData = res;
+                      console.log(this.thingsboardDeviceData);
+                      let tbDataKeys = Object.keys(this.thingsboardDeviceData);
+                      tbDataKeys.forEach(key => {
+                          let value = this.thingsboardDeviceData[key];
+                          value.forEach(val =>{
+                              console.log(val.value);
+                              pCodes = val.value.split(',');
+                              console.log(this.pCodes);
+                          });
+                        });
+                  },
+                  err => {
+                      console.log("Error occured." + err)
+                      for(var errItem in err){
+                          console.log(errItem)
+                          console.log(err[errItem])
+                      }
+                  });  
+          });
+          return pCodes;
+      }*/
 
     selectedCode : any;
     selectedTroubleObject : any;
