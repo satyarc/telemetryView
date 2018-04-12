@@ -50,11 +50,11 @@
 								<app-diagnotic-views></app-diagnotic-views>
 							</div>
 							<div *ngIf="viewVehicleData">
-								<app-vehicle-data></app-vehicle-data>
+								<app-vehicle-data [dateTime] = "dateTime" [vehicleData] = "vehicleData"></app-vehicle-data>
 							</div>
 							<p>
 							<div *ngIf="viewPerformanceBehaviour">
-								<app-driver-behaviour></app-driver-behaviour>
+								<app-driver-behaviour [driverBehaviour] = "driverBehaviour"></app-driver-behaviour>
 							</div>
 							<p>
 							<div *ngIf="viewVehicleHealth">

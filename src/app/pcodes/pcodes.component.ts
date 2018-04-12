@@ -11,7 +11,23 @@ import {Observable} from "rxjs/Observable";
   styleUrls: ['./pcodes.component.css']
 })
 export class PcodesComponent implements OnInit {
+  
+    interval :any;
 
+    constructor(private http:HttpClient) {
+        let token : any;
+        this.http.post('http://119.81.217.94:8080/api/auth/login', {'username':'tenant@thingsboard.org','password':'tenant'})
+        .subscribe(res => {
+            token = res;
+            this.authToken =  'Bearer ' + token.token; 
+            console.log(this.authToken);
+            this.refreshData();
+            this.interval = setInterval(() => { 
+                this.refreshData(); 
+            }, 15000);
+        });
+    }
+    
   ngOnInit() {
       //this.getPosts();
   }
@@ -22,81 +38,36 @@ export class PcodesComponent implements OnInit {
 
   pCodes :Array<any>;
   
- 
-  constructor(private http:HttpClient) {
-      let token : any;
-      this.http.post('http://119.81.217.94:8080/api/auth/login', {'username':'tenant@thingsboard.org','password':'tenant'})
+  refreshData(){
+      let url = this.urlbase + "DTC_List";
+
+      this.http.get(url,{headers:{'Content-Type':'application/json','X-Authorization': this.authToken}})
       .subscribe(res => {
-          token = res;
-          this.authToken =  'Bearer ' + token.token; 
-          console.log(this.authToken);
-          let url = this.urlbase + "DTC_List";
-
-          this.http.get(url,{headers:{'Content-Type':'application/json','X-Authorization': this.authToken}})
-          .subscribe(res => {
-              this.thingsboardDeviceData = res;
-                  console.log(this.thingsboardDeviceData);
-                  let tbDataKeys = Object.keys(this.thingsboardDeviceData);
-                  tbDataKeys.forEach(key => {
-                      let value = this.thingsboardDeviceData[key];
-                      value.forEach(val =>{
-                          console.log(val.value);
-                          this.pCodes = val.value.split(',');
-                          console.log(this.pCodes);
-                      });
-                    });
-              },
-              err => {
-                  console.log("Error occured." + err)
-                  for(var errItem in err){
-                      console.log(errItem)
-                      console.log(err[errItem])
-                  }
-              });  
-      });
-    }
+          this.thingsboardDeviceData = res;
+              console.log(this.thingsboardDeviceData);
+              let tbDataKeys = Object.keys(this.thingsboardDeviceData);
+              tbDataKeys.forEach(key => {
+                  let value = this.thingsboardDeviceData[key];
+                  value.forEach(val =>{
+                      console.log(val.value);
+                      this.pCodes = val.value.split(',');
+                      console.log(this.pCodes);
+                  });
+                });
+          },
+          err => {
+              console.log("Error occured." + err)
+              for(var errItem in err){
+                  console.log(errItem)
+                  console.log(err[errItem])
+              }
+          });  
+  }
   
-      /*
-    getPosts(): Observable<Array<any>>{
-          let token : any;
-          let pCodes : Array<any>;
-          this.http.post('http://119.81.217.94:8080/api/auth/login', {'username':'tenant@thingsboard.org','password':'tenant'})
-          .map(res => {
-              token = res;
-              this.authToken =  'Bearer ' + token.token; 
-              console.log(this.authToken);
-              let url = this.urlbase + "DTC_List";
-    
-              this.http.get(url,{headers:{'Content-Type':'application/json','X-Authorization': this.authToken}})
-              .map(res => {
-                  this.thingsboardDeviceData = res;
-                      console.log(this.thingsboardDeviceData);
-                      let tbDataKeys = Object.keys(this.thingsboardDeviceData);
-                      tbDataKeys.forEach(key => {
-                          let value = this.thingsboardDeviceData[key];
-                          value.forEach(val =>{
-                              console.log(val.value);
-                              pCodes = val.value.split(',');
-                              console.log(this.pCodes);
-                          });
-                        });
-                  },
-                  err => {
-                      console.log("Error occured." + err)
-                      for(var errItem in err){
-                          console.log(errItem)
-                          console.log(err[errItem])
-                      }
-                  });  
-          });
-          return pCodes;
-      }*/
-
     selectedCode : any;
     selectedTroubleObject : any;
     troubleDescriptionSegments : Array<any>;
-    
-         
+        
     showpcodeDetails(event){
         console.log(event.path[0].innerText);
         this.selectedCode = event.path[0].innerText;
@@ -124,5 +95,4 @@ export class PcodesComponent implements OnInit {
                 }
             });  
     }
-
 }

@@ -18,16 +18,24 @@ thingsboardDeviceData : any;
 
 vehicleHealth = [];
 
+interval :any;
 constructor(private http:HttpClient) {
-    
     let token : any;
     this.http.post('http://119.81.217.94:8080/api/auth/login', {'username':'tenant@thingsboard.org','password':'tenant'})
     .subscribe(res => {
         token = res;
         this.authToken =  'Bearer ' + token.token; 
         console.log(this.authToken);
-        let url = this.urlbase + this.parameters;
+        this.refreshData();
+        this.interval = setInterval(() => { 
+            this.refreshData(); 
+        }, 15000);
+    });
+}
 
+refreshData() {
+        this.vehicleHealth = [];
+        let url = this.urlbase + this.parameters;
         this.http.get(url,{headers:{'Content-Type':'application/json','X-Authorization': this.authToken}})
         .subscribe(res => {
             this.thingsboardDeviceData = res;
@@ -39,8 +47,6 @@ constructor(private http:HttpClient) {
                     let value = this.thingsboardDeviceData[key];
                     value.forEach(val =>{
                         console.log(val.value);
-                        //this.pCodes = val.value.split(',');
-                        //console.log(this.pCodes);
                         this.vehicleHealth.push({"key":key,"value":val.value});
                     });
                   });
@@ -52,7 +58,6 @@ constructor(private http:HttpClient) {
                     console.log(err[errItem])
                 }
             });  
-    });
   }
 
   ngOnInit() {
