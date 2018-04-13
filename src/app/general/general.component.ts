@@ -32,14 +32,13 @@ export class GeneralComponent implements OnInit {
     }
     
     refreshData() {
-        this.deviceInfo = [];
         let url = this.urlbase + this.parameters;
         this.http.get(url,{headers:{'Content-Type':'application/json','X-Authorization': this.authToken}})
         .subscribe(res => {
             this.thingsboardDeviceData = res;
                 console.log(this.thingsboardDeviceData);
                 let tbDataKeys = Object.keys(this.thingsboardDeviceData);
-                
+                this.deviceInfo = [];
                 tbDataKeys.forEach(key => {
                     console.log(key);
                     let value = this.thingsboardDeviceData[key];
