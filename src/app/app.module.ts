@@ -32,7 +32,6 @@ import { CrashReportComponent } from './crash-report/crash-report.component';
   imports: [
     BrowserModule,
     BrowserAnimationsModule,
-    NgbModule.forRoot(),
     HttpClientModule
   ],
   providers: [],
