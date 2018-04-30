@@ -1,7 +1,7 @@
 table{
   table-layout: fixed;
   width:100%;
-  background-color:#bcc1e7;
+  background-color:white;
   border:0px solid grey;
   height:250px;
 }
@@ -13,5 +13,5 @@ td{
 
 h6{
 	align:left;
-	color :#1f85d8;
+	color :black;
 }

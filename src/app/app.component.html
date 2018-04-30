@@ -1,18 +1,19 @@
 <body>
-	<table>
+	
+	<table  style="background-color:blue;">
 		<tr>
 			<td>
-				<table>
+				<table style="background-color:rgb(83, 247, 8);">
 					<tr>
 						<td width="18%">
-							<img src="assets\img\intellipredikt.png"  height = "60px" width = "220px">
+							<img src="assets\img\intellipredikt.png"  height = "60px" width = "280px">
 						</td>
 					</tr>
 				</table>
 			</td>
-			<td  width = 1%></td>
+			<td  width = 1% style="background-color:rgb(83, 247, 8)"></td>
 			<td>
-				<table>
+				<table style="background-color:rgb(83, 247, 8)"> 
 					<tr>
 						<td>
 							<h1 align="center">Remote Diagnostics</h1>
@@ -21,21 +22,21 @@
 				</table>
 			</td>
 		</tr>
-		<tr height="10px"></tr>
 		<tr>
-			<td width="18%">
-				<table>
+			<td width="5px" height="0px" style="vertical-align: top;"> 
+			
+				<table border="1px" style="vertical-align:top;" >
 					<tr>
-						<td width="15%"></td>
-						<td>
+						
+						<td style="padding:10%;vertical-align:top;">
 							<button [ngClass]="[btnView1]"  (click)="showView1($event)">Dashboard</button>
-							<p></p>			
+							<p><br></p>		
 							<button [ngClass]="[btnVehicleData]"  (click)="showViewVehicleData($event)">Vehicle Data</button>
-							<p></p>						
+							<p><br></p>						
 							<button [ngClass]="[btnPerformanceBehaviour]" (click)="showPerformanceBehaviour($event)">Driver Behaviour</button>
-							<p></p>						
+							<p><br></p>						
 							<button [ngClass]="[btnVehicleHealth]" (click)="showVehicleHealth($event)">Vehicle Health</button>
-							<p></p>						
+							<p><br></p>						
 							<button [ngClass]="[btnCrashReport]" (click)="showCrashReport($event)">Crash Report</button>
 						</td>
 					</tr>
@@ -43,11 +44,12 @@
 			</td>
 			<td  width = 1%></td>
 			<td>
+				<div>
 				<table>
 					<tr>
 						<td>
 							<div *ngIf="view1">
-								<app-diagnotic-views></app-diagnotic-views>
+								<app-diagnotic-views [generalInfo] = "generalInfo" [vehicleHealth] = "vehicleHealth" [pCodes] = "pCodes" [min] = "min"></app-diagnotic-views>
 							</div>
 							<div *ngIf="viewVehicleData">
 								<app-vehicle-data [dateTime] = "dateTime" [vehicleData] = "vehicleData"></app-vehicle-data>
@@ -58,15 +60,17 @@
 							</div>
 							<p>
 							<div *ngIf="viewVehicleHealth">
-								<app-vehicle-health></app-vehicle-health>
+								<app-vehicle-health ></app-vehicle-health>
 							</div>
 							<p>
 							<div *ngIf="viewCrashReport">
-								<app-crash-report></app-crash-report>
+								<!--<app-crash-report></app-crash-report>-->
+								<app-chart></app-chart>
 							</div>
 						</td>
 					</tr>
 				</table>
+			</div>
 			</td>
 		</tr>
 	</table>

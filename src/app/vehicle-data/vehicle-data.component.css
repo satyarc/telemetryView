@@ -1,9 +1,11 @@
 table, th, td{
 	border: 1px solid grey;
+	color:grey
 }
 
 td{
 	height:20px;
+	color:grey
 }
 
 div{

@@ -1,13 +1,19 @@
-table, th, td{
-	border: 1px solid grey;
+table{
+  table-layout: fixed;
+  width:100%;
+  background-color:white;
 }
 
 td{
-	height:20px;
+	border: 0px solid grey;
+}
+
+h6{
+	align:center;
+	color :black;
 }
 
 div{
-	height : 560px;
-	overflow-y: scroll;
-	border:1px solid grey;
+	height : 215px;
+	border:2px solid grey;
 }

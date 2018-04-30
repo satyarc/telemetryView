@@ -1,15 +1,13 @@
-<table height="10px"></table>
+<table height="0px"></table>
 <table width="100%" >
 	<tr>
 		<td  width = 1%></td>
 		<td width = 25%>
-			
-			<app-general></app-general>
+			   <app-general [generalInfo] = "generalInfo" [min] = "min"></app-general> 
 		</td>
 		<td  width = 1%></td>
 		<td>
-			<!--  <app-monitored-tests [monitoredTests] = "devicedetails.monitoredTests"></app-monitored-tests> -->
-			<app-monitored-tests></app-monitored-tests>
+			<app-vehicle-health [vehicleHealth] = "vehicleHealth"></app-vehicle-health>
 		</td>
 		<td  width = 1%></td>
 	</tr>
@@ -18,7 +16,7 @@
 <table>
 	<tr>
 		<td>
-			<app-pcodes></app-pcodes>
+			<app-pcodes [pCodes] = "pCodes"></app-pcodes>
 		</td>
 	</tr>
 </table>

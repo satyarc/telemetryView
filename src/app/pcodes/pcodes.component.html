@@ -1,4 +1,4 @@
-<table>
+<table style="background-color:blue">
 	<tr>
 		<td  width = "1%"></td>
 		<td width="25%">
@@ -7,12 +7,14 @@
 					<tr>
 						<td width="25%"></td>
 						<td>
-							<h6><b>Trouble Code(s)</b></h6>
+							<h5><b>Trouble Code(s)</b></h5>
+							<br>
 						</td>
 					</tr>
 					<tr  *ngFor="let pCode of pCodes">
 						<td width="25%"></td>
 						<td>
+							
 							<button  class="btn" [ngClass]="{'btn-add': !clicked, 'btn-remove': clicked}" (click)="showpcodeDetails($event)"  (click)="clicked = true">{{pCode}}</button>
 							<p></p>
 						</td>
@@ -26,7 +28,7 @@
 				<table width="100%">
 					<tr>
 						<td>
-							<h6 align="center"><b>DTC Number : {{selectedCode}}</b></h6>
+							<h5 align="center"><b>DTC Number : {{selectedCode}}</b></h5>
 							<app-description [descSegments] = "troubleDescriptionSegments" [pCode] = "selectedCode"></app-description>
 						</td>
 					</tr>
