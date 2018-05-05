@@ -146,7 +146,8 @@ export class AppComponent {
                   //data for charts
                   this.engineRpm.push(this.pageInfo.Vehicle_Engine_RPM);
                   this.engineLoad.push(this.pageInfo.Engine_Load);
-                  this.timeLine.push(new Date());
+                  let curTime = new Date();
+                  this.timeLine.push(curTime.getHours() + ":" + curTime.getMinutes() + ":" + curTime.getSeconds());
                   
                   this.setNextStartAndEndPoints();
               },

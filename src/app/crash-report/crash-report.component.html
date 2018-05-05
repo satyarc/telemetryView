@@ -16,9 +16,11 @@
       <tr>
         <th *ngFor="let label of timeLine">{{label}}</th>
       </tr>
+      
       <tr *ngFor="let d of chartData">
         <td *ngFor="let label of timeLine; let j=index">{{d && d.data[j]}}</td>
       </tr>
+      
     </table>
   </div>
 </div>
