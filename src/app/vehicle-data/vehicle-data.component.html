@@ -1,150 +1,156 @@
 <h3 align="center">Vehicle Data</h3>
 <div>
-<table  width="100%">
-<tr>
-	<th><b>Date</b></th>
-	<th><b>Time</b></th>
-	<th><b>Parameter</b></th>
-	<th><b>Value</b></th>
-</tr>
-<tr>
+<table >
+<tr  *ngFor="let pageInfo of pageInfoList">
 	<td>
-		<h6></h6>
-	</td>
-	<td>
-		<h6></h6>
-	</td>
-	<td>
-		<h6>Vehicle_Engine_RPM</h6>
-	</td>
-	<td>
-		<h6>{{pageInfo && pageInfo.Vehicle_Engine_RPM}}</h6>
-	</td>
-</tr>
-<tr>
-	<td>
-		<h6></h6>
-	</td>
-	<td>
-		<h6></h6>
-	</td>
-	<td>
-		<h6>Vehicle_MAF</h6>
-	</td>
-	<td>
-		<h6>{{pageInfo && pageInfo.Vehicle_MAF}}</h6>
-	</td>
-</tr>
-<tr>
-	<td>
-		<h6></h6>
-	</td>
-	<td>
-		<h6></h6>
-	</td>
-	<td>
-		<h6>Vehicle_MAP</h6>
-	</td>
-	<td>
-		<h6>{{pageInfo && pageInfo.Vehicle_MAP}}</h6>
-	</td>
-</tr>
-<tr>
-	<td>
-		<h6></h6>
-	</td>
-	<td>
-		<h6></h6>
-	</td>
-	<td>
-		<h6>Intake_Air_Temp</h6>
-	</td>
-	<td>
-		<h6>{{pageInfo && pageInfo.Intake_Air_Temp}}</h6>
-	</td>
-</tr>
-<tr>
-	<td>
-		<h6></h6>
-	</td>
-	<td>
-		<h6></h6>
-	</td>
-	<td>
-		<h6>Abs_Throttle_Pos</h6>
-	</td>
-	<td>
-		<h6>{{pageInfo && pageInfo.Abs_Throttle_Pos}}</h6>
-	</td>
-</tr>
-<tr>
-	<td>
-		<h6></h6>
-	</td>
-	<td>
-		<h6></h6>
-	</td>
-	<td>
-		<h6>Abs_Acc_Pedal_Pos</h6>
-	</td>
-	<td>
-		<h6>{{pageInfo && pageInfo.Abs_Acc_Pedal_Pos}}</h6>
-	</td>
-</tr>
-<tr>
-	<td>
-		<h6></h6>
-	</td>
-	<td>
-		<h6></h6>
-	</td>
-	<td>
-		<h6>Veh_Pos_Long</h6>
-	</td>
-	<td>
-		<h6>{{pageInfo && pageInfo.Veh_Pos_Long}}</h6>
-	</td>
-</tr>
-<tr>
-	<td>
-		<h6></h6>
-	</td>
-	<td>
-		<h6></h6>
-	</td>
-	<td>
-		<h6>Veh_Pos_Latt</h6>
-	</td>
-	<td>
-		<h6>{{pageInfo && pageInfo.Veh_Pos_Latt}}</h6>
-	</td>
-</tr>
-<tr>
-	<td>
-		<h6></h6>
-	</td>
-	<td>
-		<h6></h6>
-	</td>
-	<td>
-		<h6>Engine_Load</h6>
-	</td>
-	<td>
-		<h6>{{pageInfo && pageInfo.Engine_Load}}</h6>
-	</td>
-</tr>
-<tr>
-	<td>
-		<h6></h6>
-	</td>
-	<td>
-		<h6></h6>
-	</td>
-	<td>
-		<h6>Engine_Retarder_Torque</h6>
-	</td>
-	<td>
-		<h6>{{pageInfo && pageInfo.Engine_Retarder_Torque}}</h6>
+		<table>
+			<tr>
+				<th><b>Date</b></th>
+				<th><b>Time</b></th>
+				<th><b>Parameter</b></th>
+				<th><b>Value</b></th>
+			</tr>
+			<tr>
+				<td>
+					<h6>{{pageInfo.ts.getDate() + "/" + pageInfo.ts.getMonth() + "/" +  pageInfo.ts.getFullYear()}}</h6>
+				</td>
+				<td>
+					<h6>{{pageInfo.ts.getHours() + ":" + pageInfo.ts.getMinutes() + ":" +  pageInfo.ts.getSeconds()}}</h6>
+				</td>
+				<td>
+					<h6>Vehicle_Engine_RPM</h6>
+				</td>
+				<td>
+					<h6>{{pageInfo.value && pageInfo.value.Vehicle_Engine_RPM}}</h6>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<h6>{{pageInfo.ts.getDate() + "/" + pageInfo.ts.getMonth() + "/" +  pageInfo.ts.getFullYear()}}</h6>
+				</td>
+				<td>
+					<h6>{{pageInfo.ts.getHours() + ":" + pageInfo.ts.getMinutes() + ":" +  pageInfo.ts.getSeconds()}}</h6>
+				</td>
+				<td>
+					<h6>Vehicle_MAF</h6>
+				</td>
+				<td>
+					<h6>{{pageInfo.value && pageInfo.Vehicle_MAF}}</h6>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<h6>{{pageInfo.ts.getDate() + "/" + pageInfo.ts.getMonth() + "/" +  pageInfo.ts.getFullYear()}}</h6>
+				</td>
+				<td>
+					<h6>{{pageInfo.ts.getHours() + ":" + pageInfo.ts.getMinutes() + ":" +  pageInfo.ts.getSeconds()}}</h6>
+				</td>
+				<td>
+					<h6>Vehicle_MAP</h6>
+				</td>
+				<td>
+					<h6>{{pageInfo.value && pageInfo.value.Vehicle_MAP}}</h6>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<h6>{{pageInfo.ts.getDate() + "/" + pageInfo.ts.getMonth() + "/" +  pageInfo.ts.getFullYear()}}</h6>
+				</td>
+				<td>
+					<h6>{{pageInfo.ts.getHours() + ":" + pageInfo.ts.getMinutes() + ":" +  pageInfo.ts.getSeconds()}}</h6>
+				</td>
+				<td>
+					<h6>Intake_Air_Temp</h6>
+				</td>
+				<td>
+					<h6>{{pageInfo.value && pageInfo.value.Intake_Air_Temp}}</h6>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<h6>{{pageInfo.ts.getDate() + "/" + pageInfo.ts.getMonth() + "/" +  pageInfo.ts.getFullYear()}}</h6>
+				</td>
+				<td>
+					<h6>{{pageInfo.ts.getHours() + ":" + pageInfo.ts.getMinutes() + ":" +  pageInfo.ts.getSeconds()}}</h6>
+				</td>
+				<td>
+					<h6>Abs_Throttle_Pos</h6>
+				</td>
+				<td>
+					<h6>{{pageInfo.value && pageInfo.value.Abs_Throttle_Pos}}</h6>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<h6>{{pageInfo.ts.getDate() + "/" + pageInfo.ts.getMonth() + "/" +  pageInfo.ts.getFullYear()}}</h6>
+				</td>
+				<td>
+					<h6>{{pageInfo.ts.getHours() + ":" + pageInfo.ts.getMinutes() + ":" +  pageInfo.ts.getSeconds()}}</h6>
+				</td>
+				<td>
+					<h6>Abs_Acc_Pedal_Pos</h6>
+				</td>
+				<td>
+					<h6>{{pageInfo.value && pageInfo.value.Abs_Acc_Pedal_Pos}}</h6>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<h6>{{pageInfo.ts.getDate() + "/" + pageInfo.ts.getMonth() + "/" +  pageInfo.ts.getFullYear()}}</h6>
+				</td>
+				<td>
+					<h6>{{pageInfo.ts.getHours() + ":" + pageInfo.ts.getMinutes() + ":" +  pageInfo.ts.getSeconds()}}</h6>
+				</td>
+				<td>
+					<h6>Veh_Pos_Long</h6>
+				</td>
+				<td>
+					<h6>{{pageInfo.value && pageInfo.value.Veh_Pos_Long}}</h6>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<h6>{{pageInfo.ts.getDate() + "/" + pageInfo.ts.getMonth() + "/" +  pageInfo.ts.getFullYear()}}</h6>
+				</td>
+				<td>
+					<h6>{{pageInfo.ts.getHours() + ":" + pageInfo.ts.getMinutes() + ":" +  pageInfo.ts.getSeconds()}}</h6>
+				</td>
+				<td>
+					<h6>Veh_Pos_Latt</h6>
+				</td>
+				<td>
+					<h6>{{pageInfo.value && pageInfo.value.Veh_Pos_Latt}}</h6>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<h6>{{pageInfo.ts.getDate() + "/" + pageInfo.ts.getMonth() + "/" +  pageInfo.ts.getFullYear()}}</h6>
+				</td>
+				<td>
+					<h6>{{pageInfo.ts.getHours() + ":" + pageInfo.ts.getMinutes() + ":" +  pageInfo.ts.getSeconds()}}</h6>
+				</td>
+				<td>
+					<h6>Engine_Load</h6>
+				</td>
+				<td>
+					<h6>{{pageInfo.value && pageInfo.value.Engine_Load}}</h6>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<h6>{{pageInfo.ts.getDate() + "/" + pageInfo.ts.getMonth() + "/" +  pageInfo.ts.getFullYear()}}</h6>
+				</td>
+				<td>
+					<h6>{{pageInfo.ts.getHours() + ":" + pageInfo.ts.getMinutes() + ":" +  pageInfo.ts.getSeconds()}}</h6>
+				</td>
+				<td>
+					<h6>Engine_Retarder_Torque</h6>
+				</td>
+				<td>
+					<h6>{{pageInfo.value && pageInfo.value.Engine_Retarder_Torque}}</h6>
+				</td>
+			</tr>
+		</table>
 	</td>
 </tr>
 </table>

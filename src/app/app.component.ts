@@ -74,37 +74,43 @@ export class AppComponent {
     
     thingsboardDeviceData : any;
     
-    pageInfo = {"Curr_Date":" ",
-            "Curr_Time":" ",
-            "Odometer_Val":" ",
-            "IMEI_number":" ",
-            "Vehicle_VIN":" ",
-            "Vehicle_ECT":" ",
-            "Bat_Volt_Sts":" ",
-            "MIL_Status":" ",
-            "No_Of_DTC_Prs":" ",
-            "Vehicle_Engine_RPM":" ",
-            "Vehicle_MAF":" ",
-            "Vehicle_MAP":" ",
-            "Intake_Air_Temp":" ",
-            "Abs_Throttle_Pos":" ",
-            "Abs_Acc_Pedal_Pos":" ",
-            "Veh_Pos_Long":" ",
-            "Veh_Pos_Latt":" ",
-            "Engine_Load":" ",
-            "Engine_Retarder_Torque":" ",
-            "Swirving_Event_Cnt":" ",
-            "DTC_Info_List":" ",
-            "Harsh_Accel_Cnt":" ",
-            "Harsh_Breaking_Cnt":" ",
-            "Long_Idling_Cnt":" ",
-            "Short_Idling_Cnt":" ",
-            "Bat_Discon_Event_Cnt":" ",
-            "Eng_Breaking_Event_Cnt":" ",
-            "Eng_High_Rev_Cnt":" ",
-            "Over_Speeding_Lvl1_Cnt":" ",
-            "Over_Speeding_Lvl2_Cnt":" "
+    pageInfo = {    
+                    "Curr_Date":" ",
+                    "Curr_Time":" ",
+                    "Odometer_Val":" ",
+                    "IMEI_number":" ",
+                    "Vehicle_VIN":" ",
+                    "Vehicle_ECT":" ",
+                    "Bat_Volt_Sts":" ",
+                    "MIL_Status":" ",
+                    "No_Of_DTC_Prs":" ",
+                    "Vehicle_Engine_RPM":" ",
+                    "Vehicle_MAF":" ",
+                    "Vehicle_MAP":" ",
+                    "Intake_Air_Temp":" ",
+                    "Abs_Throttle_Pos":" ",
+                    "Abs_Acc_Pedal_Pos":" ",
+                    "Veh_Pos_Long":" ",
+                    "Veh_Pos_Latt":" ",
+                    "Engine_Load":" ",
+                    "Engine_Retarder_Torque":" ",
+                    "Swirving_Event_Cnt":" ",
+                    "DTC_Info_List":" ",
+                    "Harsh_Accel_Cnt":" ",
+                    "Harsh_Breaking_Cnt":" ",
+                    "Long_Idling_Cnt":" ",
+                    "Short_Idling_Cnt":" ",
+                    "Bat_Discon_Event_Cnt":" ",
+                    "Eng_Breaking_Event_Cnt":" ",
+                    "Eng_High_Rev_Cnt":" ",
+                    "Over_Speeding_Lvl1_Cnt":" ",
+                    "Over_Speeding_Lvl2_Cnt":" "
             };
+    
+    pageInfoList = []
+    timeLine = []
+    engineRpm = []
+    engineLoad = []
 
     refreshData(){
       let startTime = "&startTs=" + this.startpoint + "&endTs=" + this.endpoint + "&interval="+environment.interval+"&limit="+environment.limit+"&agg=NONE";
@@ -130,6 +136,18 @@ export class AppComponent {
                       }
                   }
                   console.log(this.pageInfo);
+                  
+                  // Accumulate limited past data
+                  this.pageInfoList.push({'ts':new Date(),'value':this.pageInfo});
+                  if(this.pageInfoList.length > environment.dataSizeLimit){
+                      this.pageInfoList.shift();
+                  }
+                  
+                  //data for charts
+                  this.engineRpm.push(this.pageInfo.Vehicle_Engine_RPM);
+                  this.engineLoad.push(this.pageInfo.Engine_Load);
+                  this.timeLine.push(new Date());
+                  
                   this.setNextStartAndEndPoints();
               },
               err => {
@@ -147,6 +165,9 @@ export class AppComponent {
     }
  
 
+  chartData = [{data:this.engineRpm, label:"Engine RPM"},
+                     {data:this.engineLoad, label:"Engine Load"}
+                    ]
   
   selectedView :any;
   view1 = true;

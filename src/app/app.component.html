@@ -9,11 +9,11 @@
 					</tr>
 				</table>
 			</td>
-			<td  width = 1% style="background-color:rgb(83, 247, 8)"></td>
+			<!--  <td  width = 1% style="background-color:rgb(83, 247, 8)"></td> -->
 			<td>
 				<table style="background-color:rgb(83, 247, 8)"> 
 					<tr>
-						<td>
+						<td width="100%">
 							<h1 align="center">Remote Diagnostics</h1>
 							
 							<!-- 
@@ -45,7 +45,7 @@
 					</tr>
 				</table>					
 			</td>
-			<td  width = 1%></td>
+			<!--  <td  width = 1%></td> -->
 			<td>
 				<div>
 				<table>
@@ -73,7 +73,7 @@
 								<app-diagnostic-views [pageInfo] = "pageInfo"></app-diagnostic-views>
 							</div>
 							<div *ngIf="viewVehicleData">
-								<app-vehicle-data [pageInfo] = "pageInfo"></app-vehicle-data>
+								<app-vehicle-data [pageInfo] = "pageInfo" [pageInfoList] = "pageInfoList" ></app-vehicle-data>
 							</div>
 							<p>
 							<div *ngIf="viewPerformanceBehaviour">
@@ -85,8 +85,7 @@
 							</div>
 							<p>
 							<div *ngIf="viewCrashReport">
-								<!--<app-crash-report></app-crash-report>
-								<app-chart></app-chart>-->
+								<app-crash-report [chartData] = "chartData" [timeLine] = "timeLine"></app-crash-report>
 							</div>
 						</td>
 					</tr>

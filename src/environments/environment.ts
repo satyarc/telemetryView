@@ -11,5 +11,6 @@ export const environment = {
   interval:0,
   limit:1,
   username:'tenant@thingsboard.org',
-  password:'tenant'
+  password:'tenant',
+  dataSizeLimit:20
 };

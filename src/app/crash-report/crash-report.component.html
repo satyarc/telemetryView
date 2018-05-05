@@ -1,25 +1,24 @@
-<h3 align="center">Crash Report</h3>
-<div>
-<table  width="100%">
-<tr>
-	<th>Date</th>
-	<th>Time</th>
-	<th>Parameter</th>
-	<th>Value</th>
-</tr>
-<tr  *ngFor="let dataItem of crashReport">
-	<td>
-		{{dataItem}}
-	</td>
-	<td>
-		{{dataItem}}
-	</td>
-	<td>
-		{{dataItem}}
-	</td>
-	<td>
-		{{dataItem}}
-	</td>
-</tr>
-</table>
+<div class="row">
+  <div class="col-md-6">
+    <div style="display: block;">
+    <canvas baseChart width="400" height="400"
+                [datasets]="chartData"
+                [labels]="timeLine"
+                [options]="lineChartOptions"
+                [legend]="lineChartLegend"
+                [chartType]="lineChartType"
+                (chartHover)="chartHovered($event)"
+                (chartClick)="chartClicked($event)"></canvas>
+    </div>
+  </div>
+  <div class="col-md-6" style="margin-bottom: 10px">
+    <table class="table table-responsive table-condensed">
+      <tr>
+        <th *ngFor="let label of timeLine">{{label}}</th>
+      </tr>
+      <tr *ngFor="let d of chartData">
+        <td *ngFor="let label of timeLine; let j=index">{{d && d.data[j]}}</td>
+      </tr>
+    </table>
+  </div>
 </div>

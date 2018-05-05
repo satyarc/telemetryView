@@ -1,11 +1,12 @@
-table, th, td{
-	border: 1px solid grey;
-	color:grey
+table, th{
+	border: 0px solid grey;
+	color:grey;
 }
 
 td{
+	border: 1px solid grey;
 	height:20px;
-	color:grey
+	color:grey;
 }
 
 div{
