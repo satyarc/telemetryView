@@ -41,6 +41,8 @@
 							<button [ngClass]="[btnVehicleHealth]" (click)="showVehicleHealth($event)">Vehicle Health</button>
 							<p><br></p>						
 							<button [ngClass]="[btnCrashReport]" (click)="showCrashReport($event)">Crash Report</button>
+							<p><br></p>						
+							<button [ngClass]="[btnEmissionReport]" (click)="showEmissionReport($event)">Emission Report</button>
 						</td>
 					</tr>
 				</table>					
@@ -86,6 +88,10 @@
 							<p>
 							<div *ngIf="viewCrashReport">
 								<app-crash-report [chartData] = "chartData" [timeLine] = "timeLine"></app-crash-report>
+							</div>
+							<p>
+							<div *ngIf="viewEmissionReport">
+								<app-emission-data-monitor></app-emission-data-monitor>
 							</div>
 						</td>
 					</tr>

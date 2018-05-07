@@ -21,6 +21,7 @@ export class AppComponent {
       this.btnPerformanceBehaviour = 'btn-default';
       this.btnVehicleHealth = 'btn-default';
       this.btnCrashReport = 'btn-default';
+      this.btnEmissionReport = 'btn-default';
       
       let token : any;
       this.http.post(environment.loginUrl, {'username':environment.username,'password':environment.password})
@@ -178,12 +179,15 @@ export class AppComponent {
   viewPerformanceBehaviour = false;
   viewVehicleHealth = false;
   viewCrashReport = false;
+  viewEmissionReport = false;
+  
   
   btnView1: string;
   btnVehicleData: string;
   btnPerformanceBehaviour: string;
   btnVehicleHealth: string;
   btnCrashReport: string;
+  btnEmissionReport: string;
   
   clickedFlag : any;
   showView1(event){
@@ -192,11 +196,13 @@ export class AppComponent {
       this.btnPerformanceBehaviour = 'btn-default';
       this.btnVehicleHealth = 'btn-default';
       this.btnCrashReport = 'btn-default';
+      this.btnEmissionReport = 'btn-default';
       this.view1 = true;
       this.viewVehicleData = false;
       this.viewPerformanceBehaviour = false;
       this.viewVehicleHealth = false;
       this.viewCrashReport = false;
+      this.viewEmissionReport = false;
   }
   
   showViewVehicleData(event){
@@ -205,11 +211,13 @@ export class AppComponent {
       this.btnPerformanceBehaviour = 'btn-default';
       this.btnVehicleHealth = 'btn-default';
       this.btnCrashReport = 'btn-default';
+      this.btnEmissionReport = 'btn-default';
       this.view1 = false;
       this.viewVehicleData = true;
       this.viewPerformanceBehaviour = false;
       this.viewVehicleHealth = false;
       this.viewCrashReport = false;
+      this.viewEmissionReport = false;
   }
   
   showPerformanceBehaviour(event){
@@ -218,11 +226,13 @@ export class AppComponent {
       this.btnPerformanceBehaviour = 'btn-clicked';
       this.btnVehicleHealth = 'btn-default';
       this.btnCrashReport = 'btn-default';
+      this.btnEmissionReport = 'btn-default';
       this.view1 = false;
       this.viewVehicleData = false;
       this.viewPerformanceBehaviour = true;
       this.viewVehicleHealth = false;
       this.viewCrashReport = false;
+      this.viewEmissionReport = false;
   }
   
   showVehicleHealth(event){
@@ -231,11 +241,13 @@ export class AppComponent {
       this.btnPerformanceBehaviour = 'btn-default';
       this.btnVehicleHealth = 'btn-clicked';
       this.btnCrashReport = 'btn-default';
+      this.btnEmissionReport = 'btn-default';
       this.view1 = false;
       this.viewVehicleData = false;
       this.viewPerformanceBehaviour = false;
       this.viewVehicleHealth = true;
       this.viewCrashReport = false;
+      this.viewEmissionReport = false;
   }
   
   showCrashReport(event){
@@ -244,10 +256,27 @@ export class AppComponent {
       this.btnPerformanceBehaviour = 'btn-default';
       this.btnVehicleHealth = 'btn-default';
       this.btnCrashReport = 'btn-clicked';
+      this.btnEmissionReport = 'btn-default';
       this.view1 = false;
       this.viewVehicleData = false;
       this.viewPerformanceBehaviour = false;
       this.viewVehicleHealth = false;
       this.viewCrashReport = true;
+      this.viewEmissionReport = false;
+  }
+  
+  showEmissionReport(event){
+      this.btnView1 = 'btn-default';
+      this.btnVehicleData = 'btn-default';
+      this.btnPerformanceBehaviour = 'btn-default';
+      this.btnVehicleHealth = 'btn-default';
+      this.btnCrashReport = 'btn-default';
+      this.btnEmissionReport = 'btn-clicked';
+      this.view1 = false;
+      this.viewVehicleData = false;
+      this.viewPerformanceBehaviour = false;
+      this.viewVehicleHealth = false;
+      this.viewCrashReport = false;
+      this.viewEmissionReport = true;
   }
 }
