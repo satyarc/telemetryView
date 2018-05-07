@@ -21,12 +21,24 @@ export class EmissionDataMonitorComponent implements OnInit {
               let allTextLines = data.split(/\r|\n|\r/);  
               allTextLines.forEach(line =>{
                   let dataItem = line.split(',');
+
                   if(dataItem != null){
                       let dterm = (dataItem[2])? dataItem[2].split(':'):'';
                       let d = (dterm && dterm[1].length > 0) ? dterm[1].split(" ").join(""):"";
+                      dataItem[2] = d;
                       
                       let hterm = (dataItem[1])? dataItem[1].split(':'):'';
                       let h = (hterm && hterm[1].length > 0) ? hterm[1].split(" ").join(""):"";
+                      dataItem[1] = h;
+                      
+                      let tterm = (dataItem[0])? dataItem[0].split(':'):'';
+                      let t = (tterm && tterm[1].length > 0) ? tterm[1].split(" ").join(""):"";
+                      dataItem[0] = t;
+                      
+                      let cterm = (dataItem[3])? dataItem[3].split(':'):'';
+                      let c = (cterm && cterm[1].length > 0) ? cterm[1].split(" ").join(""):"";
+                      dataItem[3] = c;
+                      
                       console.log(d);
                       console.log(h);
                       
@@ -59,8 +71,9 @@ export class EmissionDataMonitorComponent implements OnInit {
                           dataItem.push("nox:"+ (nox)?nox.toString():"0");
                           dataItem.push("uegoafr:"+ (uegoafr)?uegoafr.toString():"0");
                           dataItem.push("uego02:"+ (uego02)?uego02.toString():"0");
+                      
+                          this.emissionDataItems.push(dataItem);
                       }
-                      this.emissionDataItems.push(dataItem);
                   }
               });
           },
