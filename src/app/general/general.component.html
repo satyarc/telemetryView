@@ -1,49 +1,51 @@
-<div>
-	<table>
-		<tr>
-			<td>
-				<h5 align="center"><b>General Status </b></h5>
-			</td>
-		</tr>
-		
-		<tr>
-			<td>
-				<table width="100%" height="120px"  >
-					<tr>
-						<td>
-							<b>Duration  </b>
-						</td>
-						<td>
-							  {{ min && min[0]}}M : {{ min && min[1]}}S 
-						</td>
-						</tr>
-					<tr>
-					<tr>
-						<td>
-							<b>Odometer Value</b>
-						</td>
-						<td>
-							 {{pageInfo && pageInfo.Odometer_Val}}
-						</td>
-					</tr>
-					<tr>
-						<td>
-							<b>IMEI Number</b>
-						</td>
-						<td>
-							 {{pageInfo && pageInfo.IMEI_number}}
-						</td>
-					</tr>
-					<tr>
-						<td>
-							<b>Vehicle VIN</b>
-						</td>
-						<td>
-							 {{pageInfo && pageInfo.Vehicle_VIN}}
-						</td>
-					</tr>
-				</table>
-			</td>
-		</tr>
-	</table>
-</div>
+<table  style="background-color:blue">
+	<tr>
+		<td width="30%">
+			<table>
+				<tr>
+					<th>
+						<b>General Status </b>
+					</th>
+				</tr>
+			</table>
+			<table>
+				<tr>
+					<td>
+						<b>Duration  </b>
+					</td>
+					<td>
+						  {{ min && min[0]}}M : {{ min && min[1]}}S 
+					</td>
+				</tr>
+				<tr>
+					<td>
+						<b>Odometer Value</b>
+					</td>
+					<td>
+						 {{pageInfo && pageInfo.Odometer_Val}}
+					</td>
+				</tr>
+				<tr>
+					<td>
+						<b>IMEI Number</b>
+					</td>
+					<td>
+						 {{pageInfo && pageInfo.IMEI_number}}
+					</td>
+				</tr>
+				<tr>
+					<td>
+						<b>Vehicle VIN</b>
+					</td>
+					<td>
+						 {{pageInfo && pageInfo.Vehicle_VIN}}
+					</td>
+				</tr>
+			</table>
+		</td>
+		<td  width = "1%"></td>
+		<td>
+			<app-vehicle-health [pageInfo] = "pageInfo"></app-vehicle-health>
+		</td>
+	</tr>
+</table>

@@ -1,9 +1,9 @@
 table{
   table-layout: fixed;
-  width:100%;
   background-color:white;
   border:0px solid grey;
   height:250px;
+  width:100%;
 }
 
 td{

@@ -149,6 +149,7 @@ export class AppComponent {
                   let curTime = new Date();
                   this.timeLine.push(curTime.getHours() + ":" + curTime.getMinutes() + ":" + curTime.getSeconds());
                   
+
                   this.setNextStartAndEndPoints();
               },
               err => {
@@ -160,6 +161,7 @@ export class AppComponent {
               });
       }
     
+
     ngOnInit() {
       this.duration += environment.scantime;
       this.min = this.converts(this.duration/1000);

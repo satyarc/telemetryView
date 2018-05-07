@@ -1,6 +1,7 @@
 table, th{
 	border: 0px solid grey;
 	color:grey;
+	table-layout: fixed;
 }
 
 td{
