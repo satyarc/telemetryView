@@ -1,39 +1,51 @@
 <table>
 	<tr>
-		<th>
-			<b>T</b>
-		</th>
-		<th>
-			<b>H</b>
-		</th>
-		<th>
-			<b>D</b>
-		</th>
-		<th>
-			<b>C</b>
-		</th>
-		<th>
-			<b>pn</b>
-		</th>
-		<th>
-			<b>pm</b>
-		</th>
-		<th>
-			<b>nox02</b>
-		</th>
-		<th>
-			<b>nox</b>
-		</th>
-		<th>
-			<b>uegoafr</b>
-		</th>
-		<th>
-			<b>uego02</b>
-		</th>
-	</tr>
-	<tr *ngFor="let emissionDataItem of emissionDataItems">
-		<td *ngFor="let parameter of emissionDataItem">
-			<b>{{parameter}}</b>
-		</td>
+		<td><input type="file"  multiple="multiple" (change)="change($event)"></td>
+		<td><button (click)="toggleTableChart($event)">{{selection}}</button></td>
 	</tr>
 </table>
+<div *ngIf="table">
+	<table>
+		<tr>
+			<th>
+				<b>T</b>
+			</th>
+			<th>
+				<b>H</b>
+			</th>
+			<th>
+				<b>D</b>
+			</th>
+			<th>
+				<b>C</b>
+			</th>
+			<th>
+				<b>pn</b>
+			</th>
+			<th>
+				<b>pm</b>
+			</th>
+			<th>
+				<b>nox02</b>
+			</th>
+			<th>
+				<b>nox</b>
+			</th>
+			<th>
+				<b>uegoafr</b>
+			</th>
+			<th>
+				<b>uego02</b>
+			</th>
+		</tr>
+		<tr *ngFor="let emissionDataItem of emissionDataItems">
+			<td *ngFor="let parameter of emissionDataItem">
+				<b>{{parameter}}</b>
+			</td>
+		</tr>
+	</table>
+</div>
+
+<div *ngIf="chart">
+	<app-emission-data-report [chartData] = "chartData" [timeLine] = "timeLine"></app-emission-data-report>
+</div>

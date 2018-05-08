@@ -15,6 +15,7 @@ import { DescriptionComponent } from './description/description.component';
 import { ChartsModule } from 'ng2-charts/ng2-charts';
 import { CrashReportComponent } from './crash-report/crash-report.component';
 import { EmissionDataMonitorComponent } from './emission-data-monitor/emission-data-monitor.component';
+import { EmissionDataReportComponent } from './emission-data-report/emission-data-report.component';
 
 @NgModule({
   declarations: [
@@ -27,7 +28,8 @@ import { EmissionDataMonitorComponent } from './emission-data-monitor/emission-d
     VehicleDataComponent,
     DescriptionComponent,
     CrashReportComponent,
-    EmissionDataMonitorComponent
+    EmissionDataMonitorComponent,
+    EmissionDataReportComponent
   ],
   imports: [
     BrowserModule,

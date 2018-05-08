@@ -12,13 +12,61 @@ import { environment } from '../../environments/environment';
 export class EmissionDataMonitorComponent implements OnInit {
 
   emissionDataItems = [];
+  
+  dataPoints_pn = [];
+  dataPoints_pm = [];
+  dataPoints_nox02 = [];
+  dataPoints_nox = [];
+  dataPoints_uegoafr = [];
+  dataPoints_uego02 = [];
+  
+  timeLine = [];
+  
+  table = true;
+  chart = false;
+  
+  selection = 'View Chart';
+    
   constructor(private http:HttpClient) {
-      this.http.get('assets/08022018_0652_NGK.csv', {responseType: 'text'})
+      this.populateData('08022018_0652_NGK.csv');
+  }
+  
+  toggleTableChart(event){
+      this.table = !this.table;
+      this.chart = !this.chart;
+      if(this.table){
+          this.selection = 'View Chart';
+      }else{
+          this.selection = 'View Table';
+      }
+  }
+  
+  chartData = [{data:this.dataPoints_pn, label:"PN"},
+               {data:this.dataPoints_pm, label:"PM"},
+               {data:this.dataPoints_nox02, label:"NOX02"},
+               {data:this.dataPoints_nox, label:"NOX"},
+               {data:this.dataPoints_uegoafr, label:"UEGOAFR"},
+               {data:this.dataPoints_uego02, label:"UEGO02"},
+              ];
+  
+  ngOnInit() {
+      
+  }
+  
+  change(event:any) {
+      let filename = event.target.files[0].name;
+      this.populateData(filename);
+  }
+
+  populateData(fileName:string){
+      this.http.get('assets/'+ fileName, {responseType: 'text'})
       .subscribe(
           data => {
               console.log(data);
               let lines = [];
               let allTextLines = data.split(/\r|\n|\r/);  
+              
+              let t0 = parseInt(allTextLines[0].split(',')[0].split(':')[1]);
               allTextLines.forEach(line =>{
                   let dataItem = line.split(',');
 
@@ -34,6 +82,12 @@ export class EmissionDataMonitorComponent implements OnInit {
                       let tterm = (dataItem[0])? dataItem[0].split(':'):'';
                       let t = (tterm && tterm[1].length > 0) ? tterm[1].split(" ").join(""):"";
                       dataItem[0] = t;
+                      
+                      if(t.length > 0){
+                          this.timeLine.push((parseInt(t) - t0) * 0.01);
+                      }
+                      
+                      console.log(this.timeLine);
                       
                       let cterm = (dataItem[3])? dataItem[3].split(':'):'';
                       let c = (cterm && cterm[1].length > 0) ? cterm[1].split(" ").join(""):"";
@@ -53,16 +107,22 @@ export class EmissionDataMonitorComponent implements OnInit {
                           let numD = parseInt("0x" + d);
                           console.log(numD);
                           if(h === "0600"){  
-                               pn = numD & 0x00000000000000ffffffffff00000000;
-                               pm = numD & 0x000000000000000000000000ffffffff;
+                               pn = ((numD & 0x00000000000000ffffffffff00000000) * 125) - 4000000;
+                               this.dataPoints_pn.push(pn);
+                               pm = (numD & 0x000000000000000000000000ffffffff) * 0.001;
+                               this.dataPoints_pm.push(pm);
                           }
                           if(h === "0602"){
-                               nox02 = numD & 0x0000000000000000ffffffff00000000;
-                               nox = numD & 0x000000000000000000000000ffffff00;
+                               nox02 = ((numD & 0x0000000000000000ffffffff00000000) * 0.001) - 40.96;
+                               this.dataPoints_nox02.push(nox02);
+                               nox = ((numD & 0x000000000000000000000000ffffff00) * 0.5) - 256;
+                               this.dataPoints_nox.push(nox);
                           }
                           if(h === "0603"){
-                               uegoafr = numD & 0x0000000000000000ffffff0000000000;
-                               uego02 = numD & 0x000000000000000000000000ffffffff;
+                               uegoafr = (numD & 0x0000000000000000ffffff0000000000) * 0.01;
+                               this.dataPoints_uegoafr.push(uegoafr);
+                               uego02 = ((numD & 0x000000000000000000000000ffffffff)*0.01) - 40.96;
+                               this.dataPoints_uego02.push(uego02);
                           }
                       
                           dataItem.push("pn:"+ (pn)?pn.toString():"0");
@@ -81,9 +141,6 @@ export class EmissionDataMonitorComponent implements OnInit {
               console.log(error);
           }
       );
+      
   }
-  
-  ngOnInit() {
-  }
-
 }
