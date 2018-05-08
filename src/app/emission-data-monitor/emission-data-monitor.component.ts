@@ -12,6 +12,7 @@ import { environment } from '../../environments/environment';
 export class EmissionDataMonitorComponent implements OnInit {
 
   emissionDataItems = [];
+  chartDataItems = [];
   
   dataPoints_pn = [];
   dataPoints_pm = [];
@@ -29,6 +30,7 @@ export class EmissionDataMonitorComponent implements OnInit {
     
   constructor(private http:HttpClient) {
       this.populateData('08022018_0652_NGK.csv');
+      console.log(this.chartDataItems);
   }
   
   toggleTableChart(event){
@@ -41,13 +43,22 @@ export class EmissionDataMonitorComponent implements OnInit {
       }
   }
   
+  /*
   chartData = [{data:this.dataPoints_pn, label:"PN"},
                {data:this.dataPoints_pm, label:"PM"},
                {data:this.dataPoints_nox02, label:"NOX02"},
                {data:this.dataPoints_nox, label:"NOX"},
                {data:this.dataPoints_uegoafr, label:"UEGOAFR"},
                {data:this.dataPoints_uego02, label:"UEGO02"},
-              ];
+              ];*/
+  
+  chartData =  {
+          chartType: 'LineChart',
+          dataTable: this.chartDataItems,
+          options: {'title': 'Emission Data',
+                      width: 900,
+                      height: 600}
+        };
   
   ngOnInit() {
       
@@ -67,8 +78,13 @@ export class EmissionDataMonitorComponent implements OnInit {
               let allTextLines = data.split(/\r|\n|\r/);  
               
               let t0 = parseInt(allTextLines[0].split(',')[0].split(':')[1]);
+              
+              let chartColumnItem = ['T','pn','pm','nox02','nox','uegoafr','uego02'];
+              this.chartDataItems.push(chartColumnItem);
+              
               allTextLines.forEach(line =>{
                   let dataItem = line.split(',');
+                  let chartDataItem = [];
 
                   if(dataItem != null){
                       let dterm = (dataItem[2])? dataItem[2].split(':'):'';
@@ -84,7 +100,9 @@ export class EmissionDataMonitorComponent implements OnInit {
                       dataItem[0] = t;
                       
                       if(t.length > 0){
-                          this.timeLine.push((parseInt(t) - t0) * 0.01);
+                          let correctedTime = (parseInt(t) - t0) * 0.01;
+                          this.timeLine.push(correctedTime);
+                          chartDataItem.push(correctedTime);
                       }
                       
                       console.log(this.timeLine);
@@ -131,8 +149,16 @@ export class EmissionDataMonitorComponent implements OnInit {
                           dataItem.push("nox:"+ (nox)?nox.toString():"0");
                           dataItem.push("uegoafr:"+ (uegoafr)?uegoafr.toString():"0");
                           dataItem.push("uego02:"+ (uego02)?uego02.toString():"0");
-                      
+                          
+                          chartDataItem.push((pn)?pn:0);
+                          chartDataItem.push((pm)?pm:0);
+                          chartDataItem.push((nox02)?nox02:0);
+                          chartDataItem.push((nox)?nox:0);
+                          chartDataItem.push((uegoafr)?uegoafr:0);
+                          chartDataItem.push((uego02)?uego02:0);
+                          
                           this.emissionDataItems.push(dataItem);
+                          this.chartDataItems.push(chartDataItem);
                       }
                   }
               });

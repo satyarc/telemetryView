@@ -8,10 +8,14 @@ import { Component, OnInit } from '@angular/core';
 })
 export class EmissionDataReportComponent implements OnInit {
 
-  constructor() { }
+
+  constructor() {
+
+  }
 
   ngOnInit() {
   }
+  
 
    public lineChartOptions:any = {
      responsive: true

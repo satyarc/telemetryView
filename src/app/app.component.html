@@ -58,8 +58,7 @@
 							    <input [owlDateTime]="st" [owlDateTimeTrigger]="st" placeholder="DD/MM/JJJJ">
 							    <owl-date-time #st (afterPickerClosed) = "setStartTime(st.dtInput.value)"></owl-date-time>
 						</label>
-						</td>
-						<td>
+						
 						<label>
 						    End Time:
 						    <input [owlDateTimeTrigger]="et" [owlDateTime]="et">
@@ -67,8 +66,7 @@
 						</label>
 						</td>
 					</tr>
-				</table>
-				<table>
+
 					<tr>
 						<td>
 							<div *ngIf="view1">
