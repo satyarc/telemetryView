@@ -174,12 +174,12 @@ export class AppComponent {
                     ]
   
   selectedView :any;
-  view1 = true;
+  view1 = false;
   viewVehicleData = false;
   viewPerformanceBehaviour = false;
   viewVehicleHealth = false;
   viewCrashReport = false;
-  viewEmissionReport = false;
+  viewEmissionReport = true;
   
   
   btnView1: string;

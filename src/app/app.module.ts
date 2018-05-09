@@ -8,6 +8,7 @@ import { OwlNativeDateTimeModule, OWL_DATE_TIME_FORMATS  } from 'ng-pick-datetim
 import { Ng2GoogleChartsModule } from 'ng2-google-charts';
 
 
+
 import { DiagnosticViewsComponent } from './diagnostic-views/diagnostic-views.component';
 import { DriverBehaviourComponent } from './driver-behaviour/driver-behaviour.component';
 import { GeneralComponent } from './general/general.component';

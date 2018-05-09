@@ -7,6 +7,10 @@ table{
  height:100%;
 }
 
+td{
+	border:1px blue;
+}
+
 h1{
 	color:grey;
 }

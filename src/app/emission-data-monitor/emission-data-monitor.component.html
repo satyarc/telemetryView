@@ -1,59 +1,139 @@
 <table>
 	<tr>
-		<td><input type="file"  multiple="multiple" (change)="change($event)">
-		<button (click)="toggleTableChart($event)">{{selection}}</button></td>
-	</tr>
-	<tr>
-		<td>
-			<div *ngIf="table">
-				<table>
-					<tr>
-						<th>
-							<b>T</b>
-						</th>
-						<th>
-							<b>H</b>
-						</th>
-						<th>
-							<b>D</b>
-						</th>
-						<th>
-							<b>C</b>
-						</th>
-						<th>
-							<b>pn</b>
-						</th>
-						<th>
-							<b>pm</b>
-						</th>
-						<th>
-							<b>nox02</b>
-						</th>
-						<th>
-							<b>nox</b>
-						</th>
-						<th>
-							<b>uegoafr</b>
-						</th>
-						<th>
-							<b>uego02</b>
-						</th>
-					</tr>
-					<tr *ngFor="let emissionDataItem of emissionDataItems">
-						<td *ngFor="let parameter of emissionDataItem">
-							<b>{{parameter}}</b>
-						</td>
-					</tr>
-				</table>
-			</div>
-		</td>
-	</tr>
-	<tr>
-		<td>
-			<div *ngIf="chart">
-				<!--  <app-emission-data-report [chartData] = "chartDataItems" [timeLine] = "timeLine"></app-emission-data-report> -->
-				<google-chart [data]="chartData"></google-chart>
-			</div>
-		</td>
+		<td><input type="file"  multiple="multiple" (change)="changeFile1($event)"></td>
+		<td><input type="file"  multiple="multiple" (change)="changeFile2($event)"></td>
+		<td><button (click)="loadData($event)">Load Data</button></td>
+		<td><button (click)="toggleTableChart($event)">{{selection}}</button></td>
 	</tr>
 </table>
+	<div *ngIf="table">
+		<table>
+			<tr>
+				<td>
+					<table>
+						<tr>
+							<th>
+								<b>T</b>
+							</th>
+							<th>
+								<b>H</b>
+							</th>
+							<th>
+								<b>D</b>
+							</th>
+							<th>
+								<b>C</b>
+							</th>
+							<th>
+								<b>pn</b>
+							</th>
+							<th>
+								<b>pm</b>
+							</th>
+							<th>
+								<b>nox02</b>
+							</th>
+							<th>
+								<b>nox</b>
+							</th>
+							<th>
+								<b>uegoafr</b>
+							</th>
+							<th>
+								<b>uego02</b>
+							</th>
+							<th>
+								<b>ect</b>
+							</th>
+							<th>
+								<b>engrpm</b>
+							</th>
+							<th>
+								<b>vehspeed</b>
+							</th>
+						</tr>
+						<tr *ngFor="let emissionDataItem of tableData">
+							<td *ngFor="let parameter of emissionDataItem">
+								<b>{{parameter}}</b>
+							</td>
+						</tr>
+					</table>
+				</td>
+			</tr>
+		</table>
+	</div>
+	<table>
+		<tr>
+			<td>
+				<div *ngIf="allCharts">
+					<table>
+						<tr>
+							<td>	
+								<google-chart [data]="pn_chartData"  (chartSelect)='select_pn($event)'></google-chart>
+							</td>
+							<td>
+								<google-chart [data]="pm_chartData"  (chartSelect)='select_pm($event)'></google-chart>
+							</td>
+						
+							<td>
+								<google-chart [data]="nox02_chartData"  (chartSelect)='select_nox02($event)'></google-chart>
+							</td>
+						</tr>
+						<tr>
+							<td>
+								<google-chart [data]="nox_chartData"  (chartSelect)='select_nox($event)'></google-chart>
+							</td>
+						
+							<td>
+								<google-chart [data]="uegoafr_chartData"  (chartSelect)='select_uegoafr($event)'></google-chart>
+							</td>
+							<td>
+								<google-chart [data]="uego02_chartData"  (chartSelect)='select_uego02($event)'></google-chart>
+							</td>
+						</tr>
+						<tr>
+							<td>
+								<google-chart [data]="ect_chartData"  (chartSelect)='select_ect($event)'></google-chart>
+							</td>
+						
+							<td>
+								<google-chart [data]="engrpm_chartData"  (chartSelect)='select_engrpm($event)'></google-chart>
+							</td>
+							<td>
+								<google-chart [data]="vehspeed_chartData"  (chartSelect)='select_vehspeed($event)'></google-chart>
+							</td>
+						</tr>
+					</table>
+				</div>
+			</td>
+			<td>
+				<div *ngIf="pn_chart">
+					<google-chart [data]="pn_chartDataL"  (chartSelect)='hide($event)'></google-chart>
+				</div>
+				<div *ngIf="pm_chart">
+					<google-chart [data]="pm_chartDataL"  (chartSelect)='hide($event)'></google-chart>
+				</div>
+				<div *ngIf="nox02_chart">
+					<google-chart [data]="nox02_chartDataL"  (chartSelect)='hide($event)'></google-chart>
+				</div>
+				<div *ngIf="nox_chart">
+					<google-chart [data]="nox_chartDataL"  (chartSelect)='hide($event)'></google-chart>
+				</div>
+				<div *ngIf="uegoafr_chart">
+					<google-chart [data]="uegoafr_chartDataL"  (chartSelect)='hide($event)'></google-chart>
+				</div>
+				<div *ngIf="uego02_chart">
+					<google-chart [data]="uego02_chartDataL"  (chartSelect)='hide($event)'></google-chart>
+				</div>
+				<div *ngIf="ect_chart">
+					<google-chart [data]="ect_chartDataL"  (chartSelect)='hide($event)'></google-chart>
+				</div>
+				<div *ngIf="engrpm_chart">
+					<google-chart [data]="engrpm_chartDataL"  (chartSelect)='hide($event)'></google-chart>
+				</div>
+				<div *ngIf="vehspeed_chart">
+					<google-chart [data]="vehspeed_chartDataL"  (chartSelect)='hide($event)'></google-chart>
+				</div>
+			</td>
+		</tr>
+	</table>
