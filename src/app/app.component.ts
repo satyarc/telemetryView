@@ -149,7 +149,6 @@ export class AppComponent {
                   this.engineLoad.push(this.pageInfo.Engine_Load);
                   let curTime = new Date();
                   this.timeLine.push(curTime.getHours() + ":" + curTime.getMinutes() + ":" + curTime.getSeconds());
-                  
 
                   this.setNextStartAndEndPoints();
               },

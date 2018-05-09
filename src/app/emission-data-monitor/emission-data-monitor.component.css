@@ -2,3 +2,20 @@ td,th{
 	color :white;
 	border: 2px solid grey;
 }
+
+.btn-default {
+  	color:rgb(141, 140, 140);
+  	background-color: rgb(231, 228, 228);
+	height:60px;
+	width:150px;
+	border-radius: 3px;
+}
+
+.btn-clicked {
+	border: 3px solid #0ee64e;
+  	color: black;
+  	background-color: rgb(231, 176, 74);
+  	height:60px;
+	width:150px;
+	border-radius: 3px;
+}

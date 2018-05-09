@@ -36,20 +36,28 @@ export class EmissionDataMonitorComponent implements OnInit {
   engrpm_chart = false;
   vehspeed_chart = false;
   
-  selection = 'View Chart';
+  btnTable:String;
+  btnChart:String;
     
   constructor(private http:HttpClient) {
       this.populateData('08022018_0652_NGK.csv','08022018_0703_OBDII.csv');
+      this.btnTable = 'btn_clicked';
+      this.btnChart = 'btn_default';
   }
   
-  toggleTableChart(event){
-      this.table = !this.table;
-      this.allCharts = !this.allCharts;
-      if(this.table){
-          this.selection = 'View Chart';
-      }else{
-          this.selection = 'View Table';
-      }
+   
+  showTable(event){
+      this.table = true;
+      this.allCharts = false;
+      this.btnTable = 'btn_clicked';
+      this.btnChart = 'btn_default';
+  }
+  
+  showChart(event){
+      this.table = false;
+      this.allCharts = true;
+      this.btnTable = 'btn_default';
+      this.btnChart = 'btn_clicked';
   }
    
 
@@ -132,7 +140,7 @@ export class EmissionDataMonitorComponent implements OnInit {
           dataTable: this.pn_chartDataItems,
           options: {'title': 'PN',
                       width: 750,
-                      height: 450}
+                      height: 500}
         };
   
   pm_chartDataL =  {
@@ -140,7 +148,7 @@ export class EmissionDataMonitorComponent implements OnInit {
           dataTable: this.pm_chartDataItems,
           options: {'title': 'PM',
                       width: 750,
-                      height: 450}
+                      height: 500}
         };
   
   nox02_chartDataL =  {
@@ -148,7 +156,7 @@ export class EmissionDataMonitorComponent implements OnInit {
           dataTable: this.nox02_chartDataItems,
           options: {'title': 'NOX02',
                       width: 750,
-                      height: 450}
+                      height: 500}
         };
   
   nox_chartDataL =  {
@@ -156,7 +164,7 @@ export class EmissionDataMonitorComponent implements OnInit {
           dataTable: this.nox_chartDataItems,
           options: {'title': 'NOX',
                       width: 750,
-                      height: 450}
+                      height: 500}
         };
   
   uegoafr_chartDataL =  {
@@ -164,7 +172,7 @@ export class EmissionDataMonitorComponent implements OnInit {
           dataTable: this.uegoafr_chartDataItems,
           options: {'title': 'UEGOAFR',
                       width: 750,
-                      height: 450}
+                      height: 500}
         };
   
   uego02_chartDataL =  {
@@ -172,7 +180,7 @@ export class EmissionDataMonitorComponent implements OnInit {
           dataTable: this.uego02_chartDataItems,
           options: {'title': 'UEGO02',
                       width: 750,
-                      height: 450}
+                      height: 500}
         };
   
   ect_chartDataL =  {
@@ -180,7 +188,7 @@ export class EmissionDataMonitorComponent implements OnInit {
           dataTable: this.ect_chartDataItems,
           options: {'title': 'ECT',
                       width: 750,
-                      height: 450}
+                      height: 500}
         };
   
   engrpm_chartDataL =  {
@@ -188,7 +196,7 @@ export class EmissionDataMonitorComponent implements OnInit {
           dataTable: this.engrpm_chartDataItems,
           options: {'title': 'ENG RPM',
                       width: 750,
-                      height: 450}
+                      height: 500}
         };
   
   vehspeed_chartDataL =  {
@@ -196,7 +204,7 @@ export class EmissionDataMonitorComponent implements OnInit {
           dataTable: this.vehspeed_chartDataItems,
           options: {'title': 'VEH SPEED',
                       width: 750,
-                      height: 450}
+                      height: 500}
         };
     
   ngOnInit() {
@@ -406,16 +414,14 @@ export class EmissionDataMonitorComponent implements OnInit {
                       let c = (cterm && cterm[1].length > 0) ? cterm[1].split(" ").join(""):"";
                       dataItem[3] = c;
                       
-                      if(d.length > 0){
-                          let numD = parseInt("0x" + d);
-                          console.log(numD);
+                      if(d.length > 0){                         
+                          let header = parseInt("0x" + d[4] + d[5]);
+                          console.log('d :' + d);
+                          console.log('header :' + header);
                           
-                          let header = d[4] + d[5];
-                          console.log('header' + header);
-                          
-                          if(header === "05"){  
-                               ect = numD & 0x000000000000ffff0000000000000000;
-                           
+                          if(header == 0x05){  
+                               ect = parseInt("0x" + d[6] + d[7]);
+
                                if(t0_ect.length == 0){
                                    t0_ect = t;
                                }
@@ -429,11 +435,12 @@ export class EmissionDataMonitorComponent implements OnInit {
                                
                                dataPoints_ect.push(ect);
                                this.ect_chartDataItems.push(dataPoints_ect);
+                               
                                console.log(this.ect_chartDataItems);
                           }
-                          if(header === "0c"){
-                              engrpm = numD & 0x000000000000ffff0000000000000000;
-                              
+                          if(header == 0x0c){
+                              engrpm = parseInt("0x" + d[6] + d[7] + d[8] + d[9]);
+
                               if(t0_eng_rpm.length == 0){
                                   t0_eng_rpm = t;
                               }
@@ -449,9 +456,9 @@ export class EmissionDataMonitorComponent implements OnInit {
                               this.engrpm_chartDataItems.push(dataPoints_eng_rpm);
                               console.log(this.engrpm_chartDataItems);
                           }
-                          if(header === "0d"){
-                              vehspeed = numD & 0x000000000000ffffffff000000000000;
-                              
+                          if(header == 0x0d){
+                              vehspeed = parseInt("0x" + d[6] + d[7]);
+ 
                               if(t0_veh_speed.length == 0){
                                   t0_veh_speed = t;
                               }
