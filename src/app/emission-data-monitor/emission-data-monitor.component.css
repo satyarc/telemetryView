@@ -19,3 +19,13 @@ td,th{
 	width:150px;
 	border-radius: 3px;
 }
+
+div{
+	width : 900px;
+	height : 500px;
+	overflow-y: scroll;
+	border:0px solid grey;
+	color:white;
+	overflow-x: scroll;
+	overflow-y: scroll;
+}

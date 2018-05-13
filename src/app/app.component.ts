@@ -295,13 +295,13 @@ export class AppComponent {
       this.viewEmissionReport = true;
   }
   
-  realRhist =  "Historical";
+  realRhist =  "Switch to Historical";
   toggleHistorical(event){
       this.historical = !this.historical;
-      if(this.realRhist === "Real time"){
-          this.realRhist = "Historical";
+      if(this.realRhist === "Switch to Real time"){
+          this.realRhist = "Switch to Historical";
       }else{
-          this.realRhist = "Real time";
+          this.realRhist = "Switch to Real time";
       }
           
   }

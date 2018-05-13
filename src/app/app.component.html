@@ -36,9 +36,9 @@
 							<p><br></p>						
 							<button [ngClass]="[btnCrashReport]" (click)="showCrashReport($event)">Crash Report</button>
 							<p><br></p>	
-							<!--  					
+							 					
 								<button [ngClass]="[btnEmissionReport]" (click)="showEmissionReport($event)">Emission Report</button>
-							-->
+							
 						</td>
 					</tr>
 				</table>					
@@ -50,24 +50,36 @@
 					<table>
 						<tr>
 							<table>
-							<td>
-								<button [ngClass]="[btnHistorical]" (click)="toggleHistorical($event)">{{realRhist}}</button>
-							</td>
-							<td>	
-								<div *ngIf="historical">
-									<label>
-									    Start Time:
-										    <input [owlDateTime]="st" [owlDateTimeTrigger]="st" placeholder="DD/MM/JJJJ">
-										    <owl-date-time #st (afterPickerClosed) = "setStartTime(st.dtInput.value)"></owl-date-time>
-									</label>
-									
-									<label>
-									    End Time:
-										    <input [owlDateTimeTrigger]="et" [owlDateTime]="et">
-										    <owl-date-time #et (afterPickerClosed) = "setEndTime(et.dtInput.value)"></owl-date-time>
-									</label>
-								</div>
-							</td>
+								<tr>
+								<td>
+									<div *ngIf="!historical">
+									<h2>Performing Real time data analysis</h2>
+									</div>
+									<div *ngIf="historical">
+									<h2>Performing Historical data analysis</h2>
+									</div>
+								</td>
+								</tr>
+								<tr>
+								<td>
+									<button [ngClass]="[btnHistorical]" (click)="toggleHistorical($event)">{{realRhist}}</button>
+								</td>
+								<td>
+									<div *ngIf="historical">
+										<label>
+										    Start Time:
+											    <input [owlDateTime]="st" [owlDateTimeTrigger]="st" placeholder="DD/MM/JJJJ">
+											    <owl-date-time #st (afterPickerClosed) = "setStartTime(st.dtInput.value)"></owl-date-time>
+										</label>
+										
+										<label>
+										    End Time:
+											    <input [owlDateTimeTrigger]="et" [owlDateTime]="et">
+											    <owl-date-time #et (afterPickerClosed) = "setEndTime(et.dtInput.value)"></owl-date-time>
+										</label>
+									</div>
+								</td>
+								</tr>
 							</table>
 						</tr>
 						

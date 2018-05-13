@@ -499,6 +499,7 @@ export class EmissionDataMonitorComponent implements OnInit {
   }
   
   public select_pn(event) {
+      this.allCharts = false;
       this.pn_chart = true;
       this.pm_chart = false;
       this.nox02_chart = false;
@@ -511,6 +512,7 @@ export class EmissionDataMonitorComponent implements OnInit {
   }
   
   public select_pm(event) {
+      this.allCharts = false;
       this.pm_chart = true;
       this.pn_chart = false;
       this.nox02_chart = false;
@@ -522,7 +524,8 @@ export class EmissionDataMonitorComponent implements OnInit {
       this.vehspeed_chart = false;
   }
   
-  public select_nox02(event) {    
+  public select_nox02(event) {  
+      this.allCharts = false;
       this.pm_chart = false;
       this.pn_chart = false;
       this.nox02_chart = true;
@@ -535,6 +538,7 @@ export class EmissionDataMonitorComponent implements OnInit {
   }
   
   public select_nox(event) {
+      this.allCharts = false;
       this.pm_chart = false;
       this.pn_chart = false;
       this.nox02_chart = false;
@@ -547,6 +551,7 @@ export class EmissionDataMonitorComponent implements OnInit {
   }
   
   public select_uegoafr(event) {
+      this.allCharts = false;
       this.pm_chart = false;  
       this.pn_chart = false;
       this.nox02_chart = false;
@@ -559,6 +564,7 @@ export class EmissionDataMonitorComponent implements OnInit {
   }
   
   public select_uego02(event) {
+      this.allCharts = false;
       this.pm_chart = false;    
       this.pn_chart = false;
       this.nox02_chart = false;
@@ -571,6 +577,7 @@ export class EmissionDataMonitorComponent implements OnInit {
   }
   
   public select_ect(event) {
+      this.allCharts = false;
       this.pm_chart = false;    
       this.pn_chart = false;
       this.nox02_chart = false;
@@ -583,6 +590,7 @@ export class EmissionDataMonitorComponent implements OnInit {
   }
   
   public select_engrpm(event) {
+      this.allCharts = false;
       this.pm_chart = false;    
       this.pn_chart = false;
       this.nox02_chart = false;
@@ -595,6 +603,7 @@ export class EmissionDataMonitorComponent implements OnInit {
   }
 
   public select_vehspeed(event) {
+      this.allCharts = false;
       this.pm_chart = false;    
       this.pn_chart = false;
       this.nox02_chart = false;
@@ -608,6 +617,7 @@ export class EmissionDataMonitorComponent implements OnInit {
   
   
   public hide(event) {
+      this.allCharts = true;
       this.pm_chart = false;    
       this.pn_chart = false;
       this.nox02_chart = false;
