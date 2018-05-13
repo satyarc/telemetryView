@@ -1,13 +1,13 @@
 import { BrowserModule } from '@angular/platform-browser';
-import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
+import { BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import { NgModule } from '@angular/core';
 import { AppComponent } from './app.component';
 import { HttpClientModule,HttpClient,HttpHeaders,HttpParams } from '@angular/common/http';
 import { OwlDateTimeModule } from 'ng-pick-datetime';
 import { OwlNativeDateTimeModule, OWL_DATE_TIME_FORMATS  } from 'ng-pick-datetime';
 import { Ng2GoogleChartsModule } from 'ng2-google-charts';
-
-
+import { NgbModule} from '@ng-bootstrap/ng-bootstrap';
+//import { MdDialog, MdDialogRef} from '@angular/material';
 
 import { DiagnosticViewsComponent } from './diagnostic-views/diagnostic-views.component';
 import { DriverBehaviourComponent } from './driver-behaviour/driver-behaviour.component';
@@ -20,6 +20,7 @@ import { ChartsModule } from 'ng2-charts/ng2-charts';
 import { CrashReportComponent } from './crash-report/crash-report.component';
 import { EmissionDataMonitorComponent } from './emission-data-monitor/emission-data-monitor.component';
 import { EmissionDataReportComponent } from './emission-data-report/emission-data-report.component';
+import { ChartViewComponent } from './chart-view/chart-view.component';
 
 
 @NgModule({
@@ -34,7 +35,8 @@ import { EmissionDataReportComponent } from './emission-data-report/emission-dat
     DescriptionComponent,
     CrashReportComponent,
     EmissionDataMonitorComponent,
-    EmissionDataReportComponent
+    EmissionDataReportComponent,
+    ChartViewComponent
   ],
   imports: [
     BrowserModule,
@@ -43,7 +45,8 @@ import { EmissionDataReportComponent } from './emission-data-report/emission-dat
     ChartsModule,
     OwlDateTimeModule,
     OwlNativeDateTimeModule,
-    Ng2GoogleChartsModule
+    Ng2GoogleChartsModule,
+    NgbModule.forRoot()
   ],
   providers: [],
   bootstrap: [AppComponent]

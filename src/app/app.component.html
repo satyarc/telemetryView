@@ -3,16 +3,12 @@
 			<td>
 				<table style="background-color:rgb(83, 247, 8);">
 					<tr>
-						<td width="18%">
+						<td width="14%">
 							<img src="assets\img\intellipredikt.png"  height = "60px" width = "280px">
-						</td>
-						<td width="100%">
-							<h1 align="center">Remote Diagnostics</h1>
 						</td>
 					</tr>
 				</table>
 			</td>
-			<!--  <td  width = 1% style="background-color:rgb(83, 247, 8)"></td> 
 			<td>
 				<table style="background-color:rgb(83, 247, 8)"> 
 					<tr>
@@ -22,10 +18,9 @@
 					</tr>
 				</table>
 			</td>
-			-->
 		</tr>
 		<tr>
-			<!--  
+			 
 			<td width="5px" height="0px" style="vertical-align: top;"> 
 			
 				<table border="1px" style="vertical-align:top;" >
@@ -40,62 +35,70 @@
 							<button [ngClass]="[btnVehicleHealth]" (click)="showVehicleHealth($event)">Vehicle Health</button>
 							<p><br></p>						
 							<button [ngClass]="[btnCrashReport]" (click)="showCrashReport($event)">Crash Report</button>
-							<p><br></p>						
-							<button [ngClass]="[btnEmissionReport]" (click)="showEmissionReport($event)">Emission Report</button>
+							<p><br></p>	
+							<!--  					
+								<button [ngClass]="[btnEmissionReport]" (click)="showEmissionReport($event)">Emission Report</button>
+							-->
 						</td>
 					</tr>
 				</table>					
 			</td>
-			-->
+			
 			<!--  <td  width = 1%></td> -->
 			<td>
 				<div>
-				<table>
-					<!--  
-					<tr>
-						<td>
-						<label>
-						    Start Time:
-							    <input [owlDateTime]="st" [owlDateTimeTrigger]="st" placeholder="DD/MM/JJJJ">
-							    <owl-date-time #st (afterPickerClosed) = "setStartTime(st.dtInput.value)"></owl-date-time>
-						</label>
+					<table>
+						<tr>
+							<table>
+							<td>
+								<button [ngClass]="[btnHistorical]" (click)="toggleHistorical($event)">{{realRhist}}</button>
+							</td>
+							<td>	
+								<div *ngIf="historical">
+									<label>
+									    Start Time:
+										    <input [owlDateTime]="st" [owlDateTimeTrigger]="st" placeholder="DD/MM/JJJJ">
+										    <owl-date-time #st (afterPickerClosed) = "setStartTime(st.dtInput.value)"></owl-date-time>
+									</label>
+									
+									<label>
+									    End Time:
+										    <input [owlDateTimeTrigger]="et" [owlDateTime]="et">
+										    <owl-date-time #et (afterPickerClosed) = "setEndTime(et.dtInput.value)"></owl-date-time>
+									</label>
+								</div>
+							</td>
+							</table>
+						</tr>
 						
-						<label>
-						    End Time:
-						    <input [owlDateTimeTrigger]="et" [owlDateTime]="et">
-						    <owl-date-time #et (afterPickerClosed) = "setEndTime(st.dtInput.value)"></owl-date-time>
-						</label>
-						</td>
-					</tr>
-					-->
-					<tr>
-						<td>
-							<div *ngIf="view1">
-								<app-diagnostic-views [pageInfo] = "pageInfo"></app-diagnostic-views>
-							</div>
-							<div *ngIf="viewVehicleData">
-								<app-vehicle-data [pageInfo] = "pageInfo" [pageInfoList] = "pageInfoList" ></app-vehicle-data>
-							</div>
-							<p>
-							<div *ngIf="viewPerformanceBehaviour">
-								<app-driver-behaviour [pageInfo] = "pageInfo"></app-driver-behaviour>
-							</div>
-							<p>
-							<div *ngIf="viewVehicleHealth">
-								<app-vehicle-health ></app-vehicle-health>
-							</div>
-							<p>
-							<div *ngIf="viewCrashReport">
-								<app-crash-report [chartData] = "chartData" [timeLine] = "timeLine"></app-crash-report>
-							</div>
-							<p>
-							<div *ngIf="viewEmissionReport">
-								<app-emission-data-monitor></app-emission-data-monitor>
-							</div>
-						</td>
-					</tr>
-				</table>
-			</div>
+						<tr>
+							<td>
+								<div *ngIf="view1">
+									<app-diagnostic-views [pageInfo] = "pageInfo"></app-diagnostic-views>
+								</div>
+								<div *ngIf="viewVehicleData">
+									<app-vehicle-data [pageInfo] = "pageInfo" [pageInfoList] = "pageInfoList" ></app-vehicle-data>
+								</div>
+								<p>
+								<div *ngIf="viewPerformanceBehaviour">
+									<app-driver-behaviour [pageInfo] = "pageInfo"></app-driver-behaviour>
+								</div>
+								<p>
+								<div *ngIf="viewVehicleHealth">
+									<app-vehicle-health ></app-vehicle-health>
+								</div>
+								<p>
+								<div *ngIf="viewCrashReport">
+									<app-crash-report [chartData] = "chartData" [timeLine] = "timeLine"></app-crash-report>
+								</div>
+								<p>
+								<div *ngIf="viewEmissionReport">
+									<app-emission-data-monitor></app-emission-data-monitor>
+								</div>
+							</td>
+						</tr>
+					</table>
+				</div>
 			</td>
 		</tr>
 	</table>

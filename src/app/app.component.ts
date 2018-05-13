@@ -22,6 +22,7 @@ export class AppComponent {
       this.btnVehicleHealth = 'btn-default';
       this.btnCrashReport = 'btn-default';
       this.btnEmissionReport = 'btn-default';
+      this.btnHistorical = 'btn_realHistorical';
       
       let token : any;
       this.http.post(environment.loginUrl, {'username':environment.username,'password':environment.password})
@@ -29,6 +30,11 @@ export class AppComponent {
           token = res;
           this.authToken =  'Bearer ' + token.token; 
           console.log(this.authToken);
+          this.startpoint = new Date().getTime();
+          this.refreshData();
+          this.interval = setInterval(() => { 
+              this.refreshData();
+          }, environment.scantime);
       });
   }
   
@@ -44,22 +50,26 @@ export class AppComponent {
         return [minutes, seconds];
     }
     
-    current;
+    currentTime;
     startpoint;
     endpoint;
     endTime;
     
     setStartTime(datetime){
-        this.startpoint = datetime.getTime();
-        this.endpoint = this.startpoint + environment.scantime;
-        this.refreshData();
-        this.interval = setInterval(() => { 
-            this.refreshData();
-        }, environment.scantime);
+        this.currentTime = datetime;
+        this.startpoint = this.currentTime.getTime();
+        this.endpoint = this.startpoint + environment.scantime; 
     }
     
     setEndTime(datetime){
         this.endTime = datetime.getTime();
+        this.interval = setInterval(() => { 
+            console.log(this.endTime)
+            console.log(this.endpoint)
+            if(this.endpoint < this.endTime){
+                this.refreshData();
+            }
+        }, 1000);
     }
     
     duration = 0;
@@ -70,6 +80,7 @@ export class AppComponent {
         this.startpoint = this.endpoint;
         //if(this.endpoint < (this.endTime - environment.scantime)){
             this.endpoint = this.startpoint + environment.scantime;
+            this.currentTime.setTime(this.currentTime.getTime() + environment.scantime);
         //}
     }
     
@@ -139,12 +150,13 @@ export class AppComponent {
                   console.log(this.pageInfo);
                   
                   // Accumulate limited past data
-                  this.pageInfoList.push({'ts':new Date(),'value':this.pageInfo});
+
+                  this.pageInfoList.push({'ts':new Date((this.currentTime)),'value':JSON.parse(JSON.stringify(this.pageInfo))});
                   if(this.pageInfoList.length > environment.dataSizeLimit){
                       this.pageInfoList.shift();
                   }
                   
-                  //data for charts
+                  //data for crash report charts
                   this.engineRpm.push(this.pageInfo.Vehicle_Engine_RPM);
                   this.engineLoad.push(this.pageInfo.Engine_Load);
                   let curTime = new Date();
@@ -173,12 +185,14 @@ export class AppComponent {
                     ]
   
   selectedView :any;
-  view1 = false;
+  view1 = true;
   viewVehicleData = false;
   viewPerformanceBehaviour = false;
   viewVehicleHealth = false;
   viewCrashReport = false;
-  viewEmissionReport = true;
+  viewEmissionReport = false;
+  
+  historical = false;
   
   
   btnView1: string;
@@ -187,6 +201,8 @@ export class AppComponent {
   btnVehicleHealth: string;
   btnCrashReport: string;
   btnEmissionReport: string;
+  
+  btnHistorical:String;
   
   clickedFlag : any;
   showView1(event){
@@ -277,5 +293,16 @@ export class AppComponent {
       this.viewVehicleHealth = false;
       this.viewCrashReport = false;
       this.viewEmissionReport = true;
+  }
+  
+  realRhist =  "Historical";
+  toggleHistorical(event){
+      this.historical = !this.historical;
+      if(this.realRhist === "Real time"){
+          this.realRhist = "Historical";
+      }else{
+          this.realRhist = "Real time";
+      }
+          
   }
 }

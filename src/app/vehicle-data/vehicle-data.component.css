@@ -1,17 +1,52 @@
-table, th{
-	border: 0px solid grey;
-	color:grey;
-	table-layout: fixed;
-}
-
 td{
-	border: 1px solid grey;
-	height:20px;
-	color:grey;
+	color :white;
+	border: 2px solid grey;
 }
-
+h3{
+	color:white;
+}
 div{
-	height : 560px;
+	width : 900px;
+	height : 300px;
 	overflow-y: scroll;
 	border:0px solid grey;
+	color:white;
+	overflow-x: scroll;
+	overflow-y: scroll;
+}
+
+.header{
+	width : 900px;
+	height : 110px;
+	overflow-y: scroll;
+	border:0px solid grey;
+	color:white;
+	overflow-x: scroll;
+	overflow-y: scroll;
+}
+
+.table{
+	width : 900px;
+	height : 400px;
+	overflow-y: scroll;
+	border:0px solid grey;
+	color:white;
+	overflow-x: scroll;
+	overflow-y: scroll;
+}
+button{
+	color : white;
+	background-color:blue;
+	border-radius: 2px;
+	width:100px;
+	align:center;
+}
+
+th{
+	color :white;
+	height:50px;
+}
+
+label{
+	height:50px;
 }

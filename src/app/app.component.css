@@ -37,6 +37,14 @@ button{
 	border-radius: 3px;
 }
 
+.btn_realHistorical{
+	color:rgb(141, 140, 140);
+  	background-color: rgb(231, 228, 228);
+	height:20px;
+	width:100px;
+	border-radius: 3px;
+}
+
 .default{
 	background:blue;
 }
