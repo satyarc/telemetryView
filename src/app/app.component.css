@@ -9,6 +9,7 @@ table{
 
 td{
 	border:1px blue;
+	color:black
 }
 
 h1{
@@ -20,7 +21,7 @@ h2{
 }
 
 button{
-	color : #fff7fb;
+	color : black;
 	background-color:#800080;
 }
 
@@ -64,4 +65,7 @@ label{
 	color: white;
 }
 
+.login{
+	height:600px
+}
 

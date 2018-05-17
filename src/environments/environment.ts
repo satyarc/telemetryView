@@ -9,7 +9,7 @@ export const environment = {
   urlBase:"https://cors-anywhere.herokuapp.com/"+"http://119.81.217.94:8080/api/plugins/telemetry/DEVICE/544004b0-c850-11e7-89af-f34162121867/values/timeseries?keys=",
   scantime:20000,
   interval:0,
-  limit:1,
+  limit:500,
   username:'tenant@thingsboard.org',
   password:'tenant',
   dataSizeLimit:20

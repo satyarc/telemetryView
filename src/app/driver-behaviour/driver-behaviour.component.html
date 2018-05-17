@@ -10,18 +10,15 @@
 					<td ></td>
 					<td class="special">
 						<h6><b>Harsh_Braking_Cnt:</b></h6>
-					
-							 {{pageInfo && pageInfo.Harsh_Breaking_Cnt}}
+							 {{pageInfoList && (pageInfoList.Harsh_Breaking_Cnt.length > 0)?pageInfoList.Harsh_Breaking_Cnt[pageInfoList.Harsh_Breaking_Cnt.length - 1].value:0}}
 							
 					</td>
 					<td width="10%"></td>
 		
 					<td class="special">
 							<h6><b>Harsh Accel_Cnt:</b></h6>
-						
-								 {{pageInfo && pageInfo.Harsh_Accel_Cnt}}
-								 								
-						</td>
+								 {{pageInfoList && (pageInfoList.Harsh_Accel_Cnt.length > 0)?pageInfoList.Harsh_Accel_Cnt[pageInfoList.Harsh_Accel_Cnt.length - 1].value:0}}	 								
+					</td>
 		
 			</tr>
 			<tr>
@@ -34,9 +31,7 @@
 					<td width="1%"></td>
 					<td class="special">
 						<h6><b> Swirving_Event_Cnt:</b></h6>
-					
-							 {{pageInfo && pageInfo.Swirving_Event_Cnt}}
-							
+						{{pageInfoList && (pageInfoList.Swirving_Event_Cnt.length > 0)?pageInfoList.Swirving_Event_Cnt[pageInfoList.Swirving_Event_Cnt.length - 1].value:0}}
 					</td>
 					<td width="15%"></td>
 					<td width="10%"></td>
@@ -50,9 +45,7 @@
 						</td>-->
 						<td class="special">
 							<h6><b>Long_Idling_Cnt:</b></h6>
-						
-								 {{pageInfo && pageInfo.Long_Idling_Cnt}}
-								
+							 {{pageInfoList && (pageInfoList.Long_Idling_Cnt.length > 0)?pageInfoList.Long_Idling_Cnt[pageInfoList.Long_Idling_Cnt.length - 1].value:0}}
 						</td>
 						<td width="2%"></td>
 								</tr>
@@ -66,26 +59,20 @@
 						<td width="1%"></td>
 						<td class="special">
 							<h6><b>Short_Idling_Cnt:</b></h6>
-						
-								 {{pageInfo && pageInfo.Short_Idling_Cnt}}
-								
+								 {{pageInfoList && (pageInfoList.Short_Idling_Cnt.length > 0)?pageInfoList.Short_Idling_Cnt[pageInfoList.Short_Idling_Cnt.length - 1].value:0}}
 						</td>
 						<td width="10%"></td>
 						<td >
 								<h3><b>Driver Score:</b>
-							
-									 {{pageInfo && pageInfo.Harsh_Breaking_Cnt}}
-									 </h3>
-									
-							</td>
+									 {{pageInfoList && (pageInfoList.Harsh_Breaking_Cnt.length > 0)?pageInfoList.Harsh_Breaking_Cnt[pageInfoList.Harsh_Breaking_Cnt.length - 1].value:0}}
+								</h3>
+						</td>
 						<td width="10%"></td>
 						
 						<td class="special">
 								<h6><b>Engine_Braking_Event_Cnt:</b></h6>
-							
-									 {{pageInfo && pageInfo.Eng_Breaking_Event_Cnt}}
-									
-							</td>
+								{{pageInfoList && (pageInfoList.Eng_Breaking_Event_Cnt.length > 0)?pageInfoList.Eng_Breaking_Event_Cnt[pageInfoList.Eng_Breaking_Event_Cnt.length - 1].value:0}}
+						</td>
 					</tr>
 					<tr>
 							<td width="1%"></td>
@@ -97,9 +84,7 @@
 							<td width="1%"></td>
 							<td class="special">
 								<h6><b>Bat_Discon_Event_Cnt:</b></h6>
-							
-									 {{pageInfo && pageInfo.Bat_Discon_Event_Cnt}}
-									
+									 {{pageInfoList && (pageInfoList.Bat_Discon_Event_Cnt.length > 0)?pageInfoList.Bat_Discon_Event_Cnt[pageInfoList.Bat_Discon_Event_Cnt.length - 1].value:0}}
 							</td>
 							<td width="10%"></td>
 							<td width="15%"></td>
@@ -107,10 +92,8 @@
 							
 							<td class="special">
 									<h6><b>Engine_High_Rev_Cnt:</b></h6>
-								
-										 {{pageInfo && pageInfo.Eng_High_Rev_Cnt}}
-										
-								</td>
+										{{pageInfoList && (pageInfoList.Eng_High_Rev_Cnt.length > 0)?pageInfoList.Eng_High_Rev_Cnt[pageInfoList.Eng_High_Rev_Cnt.length - 1].value:0}}
+							</td>
 						</tr>
 						<tr>
 								<td width="1%"></td>
@@ -119,24 +102,18 @@
 								<td width="1%"></td>
 						</tr>
 					<tr>
-		
 							<td width="1%"></td>
 							<td width="22%"></td>
 							<td class="special">
 								<h6><b>Over_Speeding_Lvl1_Cnt:</b></h6>
-							
-									 {{pageInfo && pageInfo.Over_Speeding_Lvl1_Cnt}}
-									
+									 {{pageInfoList && (pageInfoList.Over_Speeding_Lvl1_Cnt.length > 0)?pageInfoList.Over_Speeding_Lvl1_Cnt[pageInfoList.Over_Speeding_Lvl1_Cnt.length - 1].value:0}}
 							</td>
 							<td width="1%"></td>
 				
 							<td class="special">
 									<h6><b>Over_Speeding_Lvl2_Cnt:</b></h6>
-								
-										 {{pageInfo && pageInfo.Over_Speeding_Lvl2_Cnt}}
-										
-								</td>
-				
+										 {{pageInfoList && (pageInfoList.Over_Speeding_Lvl2_Cnt.length > 0)?pageInfoList.Over_Speeding_Lvl2_Cnt[pageInfoList.Over_Speeding_Lvl2_Cnt.length - 1].value:0}}
+							</td>
 					</tr>
 		</table>
 		</div>

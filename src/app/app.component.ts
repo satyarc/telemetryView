@@ -24,18 +24,22 @@ export class AppComponent {
       this.btnEmissionReport = 'btn-default';
       this.btnHistorical = 'btn_realHistorical';
       
+      
       let token : any;
       this.http.post(environment.loginUrl, {'username':environment.username,'password':environment.password})
       .subscribe(res => {
           token = res;
           this.authToken =  'Bearer ' + token.token; 
           console.log(this.authToken);
-          this.startpoint = new Date().getTime();
+          this.rt_startTime = new Date().getTime();
           this.refreshData();
           this.interval = setInterval(() => { 
-              this.refreshData();
+              if(!this.historical){
+                  this.refreshData();
+              }
           }, environment.scantime);
       });
+      
   }
   
   //Code for fetching time form ts for giving start point and end point for fetching the data.
@@ -50,40 +54,22 @@ export class AppComponent {
         return [minutes, seconds];
     }
     
-    currentTime;
-    startpoint;
-    endpoint;
-    endTime;
+    rt_startTime;
+    historical_startTime;
+    historical_endTime;
     
     setStartTime(datetime){
-        this.currentTime = datetime;
-        this.startpoint = this.currentTime.getTime();
-        this.endpoint = this.startpoint + environment.scantime; 
+        this.historical_startTime = datetime.getTime();
     }
     
     setEndTime(datetime){
-        this.endTime = datetime.getTime();
-        this.interval = setInterval(() => { 
-            console.log(this.endTime)
-            console.log(this.endpoint)
-            if(this.endpoint < this.endTime){
-                this.refreshData();
-            }
-        }, 1000);
+        this.historical_endTime = datetime.getTime();
+        this.loadHistoticalDataBetween(this.historical_startTime,this.historical_endTime)
     }
     
     duration = 0;
     min = [];
-    setNextStartAndEndPoints(){
-        this.duration += environment.scantime;
-        this.min = this.converts(this.duration/1000);
-        this.startpoint = this.endpoint;
-        //if(this.endpoint < (this.endTime - environment.scantime)){
-            this.endpoint = this.startpoint + environment.scantime;
-            this.currentTime.setTime(this.currentTime.getTime() + environment.scantime);
-        //}
-    }
-    
+
     thingsboardDeviceData : any;
     
     pageInfo = {    
@@ -125,65 +111,35 @@ export class AppComponent {
     engineLoad = []
 
     refreshData(){
-      let startTime = "&startTs=" + this.startpoint + "&endTs=" + this.endpoint + "&interval="+environment.interval+"&limit="+environment.limit+"&agg=NONE";
-      let url = environment.urlBase + Object.keys(this.pageInfo) + startTime;
-      console.log(url);
-      
-      this.http.get(url,{headers:{'Content-Type':'application/json','X-Authorization': this.authToken}})
-      .subscribe(
-              res => {
-                  this.thingsboardDeviceData = res;
-                  console.log(this.thingsboardDeviceData);
+        this.loadHistoticalDataBetween(this.rt_startTime,new Date().getTime())
+    }
     
-                  for(let key in this.pageInfo) {
-                      let value = this.thingsboardDeviceData[key];
-                      if(!(value == null)){
-                          if(value.length > 0){
-                              value.forEach(val =>{
-                                      if(!(val.value == null)){
-                                          this.pageInfo[key] = val.value;
-                                      }
-                                  });
-                          }
-                      }
-                  }
-                  console.log(this.pageInfo);
-                  
-                  // Accumulate limited past data
-
-                  this.pageInfoList.push({'ts':new Date((this.currentTime)),'value':JSON.parse(JSON.stringify(this.pageInfo))});
-                  if(this.pageInfoList.length > environment.dataSizeLimit){
-                      this.pageInfoList.shift();
-                  }
-                  
-                  //data for crash report charts
-                  this.engineRpm.push(this.pageInfo.Vehicle_Engine_RPM);
-                  this.engineLoad.push(this.pageInfo.Engine_Load);
-                  let curTime = new Date();
-                  this.timeLine.push(curTime.getHours() + ":" + curTime.getMinutes() + ":" + curTime.getSeconds());
-
-                  this.setNextStartAndEndPoints();
-              },
-              err => {
-                  console.log("Error occured." + err)
-                  for(var errItem in err){
-                      console.log(errItem)
-                      console.log(err[errItem])
-                  }
-              });
-      }
     
+    loadHistoticalDataBetween(startTime:any,endTime:any){
+        let timeInterval = "&startTs=" + startTime + "&endTs=" + endTime + "&interval="+(endTime - startTime)+"&limit="+environment.limit+"&agg=NONE";
+        let url = environment.urlBase + Object.keys(this.pageInfo) + timeInterval;
+        console.log(url);
+        
+        this.http.get(url,{headers:{'Content-Type':'application/json','X-Authorization': this.authToken}})
+        .subscribe(
+            res => {
+                this.pageInfoList = JSON.parse(JSON.stringify(res));
+                console.log(this.pageInfoList);
+            },
+            err => {
+                console.log("Error occured." + err)
+                for(var errItem in err){
+                    console.log(errItem)
+                    console.log(err[errItem])
+                }
+            });
+        }
 
     ngOnInit() {
-      this.duration += environment.scantime;
-      this.min = this.converts(this.duration/1000);
+        this.realRhist =  "Switch to Real time";
     }
  
 
-  chartData = [{data:this.engineRpm, label:"Engine RPM"},
-                     {data:this.engineLoad, label:"Engine Load"}
-                    ]
-  
   selectedView :any;
   view1 = true;
   viewVehicleData = false;
@@ -192,7 +148,7 @@ export class AppComponent {
   viewCrashReport = false;
   viewEmissionReport = false;
   
-  historical = false;
+  historical = true;
   
   
   btnView1: string;
@@ -202,7 +158,7 @@ export class AppComponent {
   btnCrashReport: string;
   btnEmissionReport: string;
   
-  btnHistorical:String;
+  btnHistorical:string;
   
   clickedFlag : any;
   showView1(event){
@@ -295,7 +251,7 @@ export class AppComponent {
       this.viewEmissionReport = true;
   }
   
-  realRhist =  "Switch to Historical";
+  realRhist =  "Switch to Real time";
   toggleHistorical(event){
       this.historical = !this.historical;
       if(this.realRhist === "Switch to Real time"){
@@ -303,6 +259,26 @@ export class AppComponent {
       }else{
           this.realRhist = "Switch to Real time";
       }
-          
+  }
+  
+  userid :string;
+  updateUserId(userid :string){
+      this.userid = userid;
+  }
+  
+  password:string;
+  updatePassword(password : string){
+      this.password = password;
+  }
+  
+  loggedIn : any;
+  login(event){
+      if (this.userid === 'intellipredikt' && this.password === 'intellipredikt'){
+          this.loggedIn = true;
+      }
+  }
+  
+  logout(event){
+          this.loggedIn = false;
   }
 }

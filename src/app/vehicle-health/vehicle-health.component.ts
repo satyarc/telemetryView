@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 
 @Component({
   selector: 'app-vehicle-health',
-  inputs: ['pageInfo:pageInfo'],
+  inputs: ['pageInfoList:pageInfoList'],
   templateUrl: './vehicle-health.component.html',
   styleUrls: ['./vehicle-health.component.css']
 })

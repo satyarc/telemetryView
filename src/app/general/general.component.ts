@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 
 @Component({
   selector: 'app-general',
-  inputs: ['pageInfo:pageInfo','min:min'],
+  inputs: ['pageInfoList:pageInfoList','min:min'],
   templateUrl: './general.component.html',
   styleUrls: ['./general.component.css']
 })

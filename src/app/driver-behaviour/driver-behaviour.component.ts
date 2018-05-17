@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 
 @Component({
   selector: 'app-driver-behaviour',
-  inputs: ['pageInfo:pageInfo'],
+  inputs: ['pageInfoList:pageInfoList'],
   templateUrl: './driver-behaviour.component.html',
   styleUrls: ['./driver-behaviour.component.css']
 })

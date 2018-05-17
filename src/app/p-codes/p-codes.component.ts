@@ -6,7 +6,7 @@ import { environment } from '../../environments/environment';
 
 @Component({
   selector: 'app-p-codes',
-  inputs: ['pageInfo:pageInfo'],
+  inputs: ['pageInfoList:pageInfoList'],
   templateUrl: './p-codes.component.html',
   styleUrls: ['./p-codes.component.css']
 })

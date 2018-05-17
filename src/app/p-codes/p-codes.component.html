@@ -10,7 +10,7 @@
 			</table>
 			<div>
 				<table>
-					<tr  *ngFor="let pCode of pageInfo.DTC_Info_List.split(',')">
+					<tr  *ngFor="let pCode of pageInfoList.DTC_Info_List[pageInfoList.DTC_Info_List.length  -1].value.split(',')">
 						
 						<th>
 							<button  class="btn" [ngClass]="{'btn-add': !clicked, 'btn-remove': clicked}" (click)="showpcodeDetails($event)"  (click)="clicked = true">{{pCode}}</button>

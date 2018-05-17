@@ -1,165 +1,158 @@
 <h3 align="center" color="white"><b>Vehicle Data</b></h3>
-<div *ngIf="view_table">
-	<table>
-		<tr>
-			<td><b>Date</b></td>
-			<td><b>Time</b></td>
-			<td>
-
-				<label>Engine RPM</label>
-			</td>
-			<td>
-
-				<label>MAF</label>
-			</td>
-			<td>
-
-				<label>MAP</label>
-			</td>
-			<td>
-
-				<label>Intake Air Temperature</label>
-			</td>
-			<td>
-
-				<label>ABS Throttle Pos</label>
-			</td>
-			<td>
-
-				<label>ABS Acc Pedal Pos</label>
-			</td>
-			<td>
-
-				<label>Pos Long</label>
-			</td>
-			<td>
-
-				<label>Pos Latt</label>
-			</td>
-			<td>
-
-				<label>Engine Load</label>
-			</td>
-			<td>
-
-				<label>Retarder Torque</label>
-			</td>
-		</tr>
-		<tr>
-			<td></td>
-			<td></td>
-			<td>
-				<button  class="btn" [ngClass]="{'btn-add': !clicked, 'btn-remove': clicked}" (click)="showChart_Vehicle_Engine_RPM($event,pageInfoList)"  (click)="clicked = true">Show Chart</button>
-				<!--    <app-chart-view></app-chart-view> -->
-			</td>
-			<td>
-				<button  class="btn" [ngClass]="{'btn-add': !clicked, 'btn-remove': clicked}" (click)="showChart_Vehicle_MAF($event,pageInfoList)"  (click)="clicked = true">Show Chart</button>
-
-			</td>
-			<td>
-				<button  class="btn" [ngClass]="{'btn-add': !clicked, 'btn-remove': clicked}" (click)="showChart_Vehicle_MAP($event,pageInfoList)"  (click)="clicked = true">Show Chart</button>
-
-			</td>
-			<td>
-				<button  class="btn" [ngClass]="{'btn-add': !clicked, 'btn-remove': clicked}" (click)="showChart_Intake_Air_Temp($event,pageInfoList)"  (click)="clicked = true">Show Chart</button>
-
-			</td>
-			<td>
-				<button  class="btn" [ngClass]="{'btn-add': !clicked, 'btn-remove': clicked}" (click)="showChart_Abs_Throttle_Pos($event,pageInfoList)"  (click)="clicked = true">Show Chart</button>
-
-			</td>
-			<td>
-				<button  class="btn" [ngClass]="{'btn-add': !clicked, 'btn-remove': clicked}" (click)="showChart_Abs_Acc_Pedal_Pos($event,pageInfoList)"  (click)="clicked = true">Show Chart</button>
-
-			</td>
-			<td>
-				<button  class="btn" [ngClass]="{'btn-add': !clicked, 'btn-remove': clicked}" (click)="showChart_Veh_Pos_Long($event,pageInfoList)"  (click)="clicked = true">Show Chart</button>
-	
-			</td>
-			<td>
-				<button  class="btn" [ngClass]="{'btn-add': !clicked, 'btn-remove': clicked}" (click)="showChart_Veh_Pos_Latt($event,pageInfoList)"  (click)="clicked = true">Show Chart</button>
-
-			</td>
-			<td>
-				<button  class="btn" [ngClass]="{'btn-add': !clicked, 'btn-remove': clicked}" (click)="showChart_Engine_Load($event,pageInfoList)"  (click)="clicked = true">Show Chart</button>
-
-			</td>
-			<td>
-				<button  class="btn" [ngClass]="{'btn-add': !clicked, 'btn-remove': clicked}" (click)="showChart_Engine_Retarder_Torque($event,pageInfoList)"  (click)="clicked = true">Show Chart</button>
-
-			</td>
-		</tr>
-		<tr  *ngFor="let pageInfo of pageInfoList">
-			<td>
-				<h6>{{pageInfo.ts.toLocaleString().split(",")[0]}}</h6>
-			</td>
-			<td>
-				<h6>{{pageInfo.ts.toLocaleString().split(",")[1]}}</h6>
-			</td>
-			<td>
-				<h6>{{pageInfo.value && (pageInfo.value.Vehicle_Engine_RPM)?pageInfo.value.Vehicle_Engine_RPM:0}}</h6>
-			</td>
-			<td>
-				<h6>{{pageInfo.value && (pageInfo.Vehicle_MAF)?pageInfo.Vehicle_MAF:0}}</h6>
-			</td>
-			<td>
-				<h6>{{pageInfo.value && (pageInfo.value.Vehicle_MAP)?pageInfo.value.Vehicle_MAP:0}}</h6>
-			</td>
-			<td>
-				<h6>{{pageInfo.value && (pageInfo.value.Intake_Air_Temp)?pageInfo.value.Intake_Air_Temp:0}}</h6>
-			</td>
-			<td>
-				<h6>{{pageInfo.value && (pageInfo.value.Abs_Throttle_Pos)?pageInfo.value.Abs_Throttle_Pos:0}}</h6>
-			</td>
-			<td>
-				<h6>{{pageInfo.value && (pageInfo.value.Abs_Acc_Pedal_Pos)?pageInfo.value.Abs_Acc_Pedal_Pos:0}}</h6>
-			</td>
-			<td>
-				<h6>{{pageInfo.value && (pageInfo.value.Veh_Pos_Long)?pageInfo.value.Veh_Pos_Long:0}}</h6>
-			</td>
-			<td>
-				<h6>{{pageInfo.value && (pageInfo.value.Veh_Pos_Latt)?pageInfo.value.Veh_Pos_Latt:0}}</h6>
-			</td>
-			<td>
-				<h6>{{pageInfo.value && (pageInfo.value.Engine_Load)?pageInfo.value.Engine_Load:0}}</h6>
-			</td>
-			<td>
-				<h6>{{pageInfo.value && (pageInfo.value.Engine_Retarder_Torque)?pageInfo.value.Engine_Retarder_Torque:0}}</h6>
-			</td>
-		</tr>
-	</table>
-</div>
 <table>
 	<tr>
 		<td>
-			<div *ngIf="view_chart_Vehicle_Engine_RPM">
+			<label>Engine RPM</label>
+		</td>
+		<td>
+
+			<label>MAF</label>
+		</td>
+		<td>
+
+			<label>MAP</label>
+		</td>
+		<td>
+
+			<label>Intake Air Temperature</label>
+		</td>
+		<td>
+
+			<label>ABS Throttle Pos</label>
+		</td>
+		<td>
+
+			<label>ABS Acc Pedal Pos</label>
+		</td>
+		<td>
+
+			<label>Pos Long</label>
+		</td>
+		<td>
+
+			<label>Pos Latt</label>
+		</td>
+		<td>
+
+			<label>Engine Load</label>
+		</td>
+		<td>
+
+			<label>Retarder Torque</label>
+		</td>
+	</tr>
+	<tr>
+		<td>
+			  
+			<button  class="btn" [ngClass]="{'btn-add': !clicked, 'btn-remove': clicked}" (click)="showChart_Vehicle_Engine_RPM($event,pageInfoList)"  (click)="clicked = true">Show Chart</button>
+			<!--
+			<google-chart [data]="Vehicle_Engine_RPM_chartDataS"  (chartSelect)='showChart_Vehicle_Engine_RPM($event,pageInfoList)'></google-chart>
+			-->
+		</td>
+		<td>
+			
+			<button  class="btn" [ngClass]="{'btn-add': !clicked, 'btn-remove': clicked}" (click)="showChart_Vehicle_MAF($event,pageInfoList)"  (click)="clicked = true">Show Chart</button>
+			<!--
+			<google-chart [data]="Vehicle_MAF_chartDataS"  (chartSelect)='showChart_Vehicle_MAF($event,pageInfoList)'></google-chart>
+			-->
+		</td>
+		<td>
+			 
+			<button  class="btn" [ngClass]="{'btn-add': !clicked, 'btn-remove': clicked}" (click)="showChart_Vehicle_MAP($event,pageInfoList)"  (click)="clicked = true">Show Chart</button>
+			<!--
+			<google-chart [data]="Vehicle_MAP_chartDataS"  (chartSelect)='showChart_Vehicle_MAP($event,pageInfoList)'></google-chart>
+			-->
+		</td>
+		<td>
+			
+			<button  class="btn" [ngClass]="{'btn-add': !clicked, 'btn-remove': clicked}" (click)="showChart_Intake_Air_Temp($event,pageInfoList)"  (click)="clicked = true">Show Chart</button>
+			<!--
+			<google-chart [data]="Intake_Air_Temp_chartDataS"  (chartSelect)='showChart_Intake_Air_Temp($event,pageInfoList)'></google-chart>
+			-->
+		</td>
+		<td>
+			
+			<button  class="btn" [ngClass]="{'btn-add': !clicked, 'btn-remove': clicked}" (click)="showChart_Abs_Throttle_Pos($event,pageInfoList)"  (click)="clicked = true">Show Chart</button>
+			<!--
+			<google-chart [data]="Abs_Throttle_Pos_chartDataS"  (chartSelect)='showChart_Abs_Throttle_Pos($event,pageInfoList)'></google-chart>
+			-->
+		</td>
+		<td>
+			
+			<button  class="btn" [ngClass]="{'btn-add': !clicked, 'btn-remove': clicked}" (click)="showChart_Abs_Acc_Pedal_Pos($event,pageInfoList)"  (click)="clicked = true">Show Chart</button>
+			<!--
+			<google-chart [data]="Abs_Acc_Pedal_Pos_chartDataS"  (chartSelect)='showChart_Abs_Acc_Pedal_Pos($event,pageInfoList)'></google-chart>
+			-->
+		</td>
+		<td>
+			
+			<button  class="btn" [ngClass]="{'btn-add': !clicked, 'btn-remove': clicked}" (click)="showChart_Veh_Pos_Long($event,pageInfoList)"  (click)="clicked = true">Show Chart</button>
+			<!--
+			<google-chart [data]="Veh_Pos_Long_chartDataS"  (chartSelect)='showChart_Veh_Pos_Long($event,pageInfoList)'></google-chart>
+			-->
+		</td>
+		<td>
+			
+			<button  class="btn" [ngClass]="{'btn-add': !clicked, 'btn-remove': clicked}" (click)="showChart_Veh_Pos_Latt($event,pageInfoList)"  (click)="clicked = true">Show Chart</button>
+			<!--
+			<google-chart [data]="Veh_Pos_Latt_chartDataS"  (chartSelect)='showChart_Veh_Pos_Latt($event,pageInfoList)'></google-chart>
+			-->
+		</td>
+		<td>
+			
+			<button  class="btn" [ngClass]="{'btn-add': !clicked, 'btn-remove': clicked}" (click)="showChart_Engine_Load($event,pageInfoList)"  (click)="clicked = true">Show Chart</button>
+			<!--
+			<google-chart [data]="Engine_Load_chartDataS"  (chartSelect)='showChart_Engine_Load($event,pageInfoList)'></google-chart>
+			-->
+		</td>
+		<td>
+			
+			<button  class="btn" [ngClass]="{'btn-add': !clicked, 'btn-remove': clicked}" (click)="showChart_Engine_Retarder_Torque($event,pageInfoList)"  (click)="clicked = true">Show Chart</button>
+			<!--
+			<google-chart [data]="Engine_Retarder_Torque_chartDataS"  (chartSelect)='showChart_Engine_Retarder_Torque($event,pageInfoList)'></google-chart>
+			-->
+		</td>
+	</tr>
+</table>
+<table>
+	<tr>
+		<td>
+			<button class="btn" [ngClass]="{'btn-add': !clicked, 'btn-remove': clicked}" (click)="analyzeData($event,pageInfoList)"  (click)="clicked = true">Analyze</button>
+		</td>
+	</tr>
+	<tr>
+		<td>
+			<div *ngIf="view_table">
+				<ng2-smart-table [settings]="columns" [source]="vehicleData"></ng2-smart-table>
+			</div>
+			<div *ngIf="view_chart['Vehicle_Engine_RPM']">
 				<google-chart [data]="Vehicle_Engine_RPM_chartDataL"  (chartSelect)='hide($event)'></google-chart>
 			</div>
-			<div *ngIf="view_chart_Vehicle_MAF">
+			<div *ngIf="view_chart['Vehicle_MAF']">
 				<google-chart [data]="Vehicle_MAF_chartDataL"  (chartSelect)='hide($event)'></google-chart>
 			</div>
-			<div *ngIf="view_chart_Vehicle_MAP">
+			<div *ngIf="view_chart['Vehicle_MAP']">
 				<google-chart [data]="Vehicle_MAP_chartDataL"  (chartSelect)='hide($event)'></google-chart>
 			</div>
-			<div *ngIf="view_chart_Intake_Air_Temp">
+			<div *ngIf="view_chart['Intake_Air_Temp']">
 				<google-chart [data]="Intake_Air_Temp_chartDataL"  (chartSelect)='hide($event)'></google-chart>
 			</div>
-			<div *ngIf="view_chart_Abs_Throttle_Pos">
+			<div *ngIf="view_chart['Abs_Throttle_Pos']">
 				<google-chart [data]="Abs_Throttle_Pos_chartDataL"  (chartSelect)='hide($event)'></google-chart>
 			</div>
-			<div *ngIf="view_chart_Abs_Acc_Pedal_Pos">
+			<div *ngIf="view_chart['Abs_Acc_Pedal_Pos']">
 				<google-chart [data]="Abs_Acc_Pedal_Pos_chartDataL"  (chartSelect)='hide($event)'></google-chart>
 			</div>
-			<div *ngIf="view_chart_Veh_Pos_Long">
+			<div *ngIf="view_chart['Veh_Pos_Long']">
 				<google-chart [data]="Veh_Pos_Long_chartDataL"  (chartSelect)='hide($event)'></google-chart>
 			</div>
-			<div *ngIf="view_chart_Veh_Pos_Latt">
+			<div *ngIf="view_chart['Veh_Pos_Latt']">
 				<google-chart [data]="Veh_Pos_Latt_chartDataL"  (chartSelect)='hide($event)'></google-chart>
 			</div>
-			<div *ngIf="view_chart_Engine_Load">
+			<div *ngIf="view_chart['Engine_Load']">
 				<google-chart [data]="Engine_Load_chartDataL"  (chartSelect)='hide($event)'></google-chart>
 			</div>
-			<div *ngIf="view_chart_Engine_Retarder_Torque">
+			<div *ngIf="view_chart['Engine_Retarder_Torque']">
 				<google-chart [data]="Engine_Retarder_Torque_chartDataL"  (chartSelect)='hide($event)'></google-chart>
 			</div>
 		</td>

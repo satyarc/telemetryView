@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 
 @Component({
   selector: 'app-diagnostic-views',
-  inputs: ['pageInfo:pageInfo'],
+  inputs: ['pageInfoList:pageInfoList'],
   templateUrl: './diagnostic-views.component.html',
   styleUrls: ['./diagnostic-views.component.css']
 })
