@@ -28,8 +28,8 @@ button{
 .btn-default {
   	color:rgb(141, 140, 140);
   	background-color: rgb(231, 228, 228);
-	height:60px;
-	width:150px;
+	height:30px;
+	width:120px;
 	border-radius: 3px;
 }
 
@@ -37,8 +37,8 @@ button{
 	border: 3px solid #0ee64e;
   	color: black;
   	background-color: rgb(231, 176, 74);
-  	height:60px;
-	width:150px;
+  	height:30px;
+	width:120px;
 	border-radius: 3px;
 }
 
