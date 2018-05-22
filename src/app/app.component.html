@@ -43,7 +43,7 @@
 									</label>
 									<p>
 									<label>
-									    End Time:
+									    End   Time:
 										    <input [owlDateTimeTrigger]="et" [owlDateTime]="et">
 										    <owl-date-time #et (afterPickerClosed) = "setEndTime(et.dtInput.value)"></owl-date-time>
 									</label>
@@ -63,6 +63,8 @@
 							<button [ngClass]="[btnCrashReport]" (click)="showCrashReport($event)">Crash Report</button>
 							<p>
 							<button [ngClass]="[btnEmissionReport]" (click)="showEmissionReport($event)">Emission Report</button>
+							<p>
+							<button [ngClass]="[btnGeoLocation]" (click)="showGeoLocation($event)">Vehicle Location</button>
 						</td>
 					</tr>
 				</table>					
@@ -111,6 +113,9 @@
 								<p>
 								<div *ngIf="viewEmissionReport">
 									<app-emission-data-monitor></app-emission-data-monitor>
+								</div>
+								<div *ngIf="viewGeolocation">
+									<agm-map [latitude]="lat" [longitude]="long"></agm-map>
 								</div>
 							</td>
 						</tr>

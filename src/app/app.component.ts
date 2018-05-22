@@ -22,6 +22,7 @@ export class AppComponent {
       this.btnVehicleHealth = 'btn-default';
       this.btnCrashReport = 'btn-default';
       this.btnEmissionReport = 'btn-default';
+      this.btnGeoLocation = 'btn-default';
       this.btnHistorical = 'btn_realHistorical';
       
       
@@ -114,7 +115,8 @@ export class AppComponent {
         this.loadHistoticalDataBetween(this.rt_startTime,new Date().getTime())
     }
     
-    
+    lat : number;
+    long: number;
     loadHistoticalDataBetween(startTime:any,endTime:any){
         let timeInterval = "&startTs=" + startTime + "&endTs=" + endTime + "&interval="+(endTime - startTime)+"&limit="+environment.limit+"&agg=NONE";
         let url = environment.urlBase + Object.keys(this.pageInfo) + timeInterval;
@@ -125,6 +127,9 @@ export class AppComponent {
             res => {
                 this.pageInfoList = JSON.parse(JSON.stringify(res));
                 console.log(this.pageInfoList);
+                
+                this.lat = Number(this.pageInfoList && (this.pageInfoList["Veh_Pos_Latt"].length > 0)?this.pageInfoList['Veh_Pos_Latt'][this.pageInfoList['Veh_Pos_Latt'].length - 1].value:0);
+                this.long = Number(this.pageInfoList && (this.pageInfoList["Veh_Pos_Long"].length > 0)?this.pageInfoList['Veh_Pos_Long'][this.pageInfoList['Veh_Pos_Long'].length - 1].value:0);
             },
             err => {
                 console.log("Error occured." + err)
@@ -147,6 +152,7 @@ export class AppComponent {
   viewVehicleHealth = false;
   viewCrashReport = false;
   viewEmissionReport = false;
+  viewGeolocation = false;
   
   historical = true;
   
@@ -157,6 +163,7 @@ export class AppComponent {
   btnVehicleHealth: string;
   btnCrashReport: string;
   btnEmissionReport: string;
+  btnGeoLocation:string
   
   btnHistorical:string;
   
@@ -168,12 +175,14 @@ export class AppComponent {
       this.btnVehicleHealth = 'btn-default';
       this.btnCrashReport = 'btn-default';
       this.btnEmissionReport = 'btn-default';
+      this.btnGeoLocation = 'btn-default';
       this.view1 = true;
       this.viewVehicleData = false;
       this.viewPerformanceBehaviour = false;
       this.viewVehicleHealth = false;
       this.viewCrashReport = false;
       this.viewEmissionReport = false;
+      this.viewGeolocation = false;
   }
   
   showViewVehicleData(event){
@@ -183,12 +192,14 @@ export class AppComponent {
       this.btnVehicleHealth = 'btn-default';
       this.btnCrashReport = 'btn-default';
       this.btnEmissionReport = 'btn-default';
+      this.btnGeoLocation = 'btn-default';
       this.view1 = false;
       this.viewVehicleData = true;
       this.viewPerformanceBehaviour = false;
       this.viewVehicleHealth = false;
       this.viewCrashReport = false;
       this.viewEmissionReport = false;
+      this.viewGeolocation = false;
   }
   
   showPerformanceBehaviour(event){
@@ -198,12 +209,14 @@ export class AppComponent {
       this.btnVehicleHealth = 'btn-default';
       this.btnCrashReport = 'btn-default';
       this.btnEmissionReport = 'btn-default';
+      this.btnGeoLocation = 'btn-default';
       this.view1 = false;
       this.viewVehicleData = false;
       this.viewPerformanceBehaviour = true;
       this.viewVehicleHealth = false;
       this.viewCrashReport = false;
       this.viewEmissionReport = false;
+      this.viewGeolocation = false;
   }
   
   showVehicleHealth(event){
@@ -213,12 +226,14 @@ export class AppComponent {
       this.btnVehicleHealth = 'btn-clicked';
       this.btnCrashReport = 'btn-default';
       this.btnEmissionReport = 'btn-default';
+      this.btnGeoLocation = 'btn-default';
       this.view1 = false;
       this.viewVehicleData = false;
       this.viewPerformanceBehaviour = false;
       this.viewVehicleHealth = true;
       this.viewCrashReport = false;
       this.viewEmissionReport = false;
+      this.viewGeolocation = false;
   }
   
   showCrashReport(event){
@@ -228,12 +243,14 @@ export class AppComponent {
       this.btnVehicleHealth = 'btn-default';
       this.btnCrashReport = 'btn-clicked';
       this.btnEmissionReport = 'btn-default';
+      this.btnGeoLocation = 'btn-default';
       this.view1 = false;
       this.viewVehicleData = false;
       this.viewPerformanceBehaviour = false;
       this.viewVehicleHealth = false;
       this.viewCrashReport = true;
       this.viewEmissionReport = false;
+      this.viewGeolocation = false;
   }
   
   showEmissionReport(event){
@@ -243,12 +260,31 @@ export class AppComponent {
       this.btnVehicleHealth = 'btn-default';
       this.btnCrashReport = 'btn-default';
       this.btnEmissionReport = 'btn-clicked';
+      this.btnGeoLocation = 'btn-default';
       this.view1 = false;
       this.viewVehicleData = false;
       this.viewPerformanceBehaviour = false;
       this.viewVehicleHealth = false;
       this.viewCrashReport = false;
       this.viewEmissionReport = true;
+      this.viewGeolocation = false;
+  }
+  
+  showGeoLocation(event){
+      this.btnView1 = 'btn-default';
+      this.btnVehicleData = 'btn-default';
+      this.btnPerformanceBehaviour = 'btn-default';
+      this.btnVehicleHealth = 'btn-default';
+      this.btnCrashReport = 'btn-default';
+      this.btnEmissionReport = 'btn-default';
+      this.btnGeoLocation = 'btn-clicked';
+      this.view1 = false;
+      this.viewVehicleData = false;
+      this.viewPerformanceBehaviour = false;
+      this.viewVehicleHealth = false;
+      this.viewCrashReport = false;
+      this.viewEmissionReport = false;
+      this.viewGeolocation = true;
   }
   
   realRhist =  "Switch to Real time";

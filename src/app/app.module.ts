@@ -7,6 +7,7 @@ import { OwlDateTimeModule } from 'ng-pick-datetime';
 import { OwlNativeDateTimeModule, OWL_DATE_TIME_FORMATS  } from 'ng-pick-datetime';
 import { Ng2GoogleChartsModule } from 'ng2-google-charts';
 import { Ng2SmartTableModule } from 'ng2-smart-table';
+import { AgmCoreModule } from '@agm/core';
 
 
 
@@ -21,6 +22,8 @@ import { ChartsModule } from 'ng2-charts/ng2-charts';
 import { CrashReportComponent } from './crash-report/crash-report.component';
 import { EmissionDataMonitorComponent } from './emission-data-monitor/emission-data-monitor.component';
 import { EmissionDataReportComponent } from './emission-data-report/emission-data-report.component';
+
+import { environment } from '../environments/environment';
 
 
 
@@ -47,7 +50,10 @@ import { EmissionDataReportComponent } from './emission-data-report/emission-dat
     OwlDateTimeModule,
     OwlNativeDateTimeModule,
     Ng2GoogleChartsModule,
-    Ng2SmartTableModule
+    Ng2SmartTableModule,
+    AgmCoreModule.forRoot({
+        apiKey: environment.apiKey
+      })
   ],
   providers: [],
   bootstrap: [AppComponent]
