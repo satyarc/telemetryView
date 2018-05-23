@@ -13,5 +13,5 @@ export const environment = {
   username:'tenant@thingsboard.org',
   password:'tenant',
   dataSizeLimit:20,
-  apiKey:'AIzaSyB3YeVQLV2CCz1ZQvY8E0ilwOQ7SlmFqBI'
+  apiKey:'AIzaSyA6cRI7IUsd46nNKMtlDwlSd4b1JDhmR2o'
 };

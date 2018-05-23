@@ -66,6 +66,7 @@ export class AppComponent {
     setEndTime(datetime){
         this.historical_endTime = datetime.getTime();
         this.loadHistoticalDataBetween(this.historical_startTime,this.historical_endTime)
+        this.coordinates = [];
     }
     
     duration = 0;
@@ -115,8 +116,10 @@ export class AppComponent {
         this.loadHistoticalDataBetween(this.rt_startTime,new Date().getTime())
     }
     
-    lat : number;
-    long: number;
+    coordinates = [];
+    
+    lat :number;
+    long : number;
     loadHistoticalDataBetween(startTime:any,endTime:any){
         let timeInterval = "&startTs=" + startTime + "&endTs=" + endTime + "&interval="+(endTime - startTime)+"&limit="+environment.limit+"&agg=NONE";
         let url = environment.urlBase + Object.keys(this.pageInfo) + timeInterval;
@@ -128,8 +131,15 @@ export class AppComponent {
                 this.pageInfoList = JSON.parse(JSON.stringify(res));
                 console.log(this.pageInfoList);
                 
-                this.lat = Number(this.pageInfoList && (this.pageInfoList["Veh_Pos_Latt"].length > 0)?this.pageInfoList['Veh_Pos_Latt'][this.pageInfoList['Veh_Pos_Latt'].length - 1].value:0);
-                this.long = Number(this.pageInfoList && (this.pageInfoList["Veh_Pos_Long"].length > 0)?this.pageInfoList['Veh_Pos_Long'][this.pageInfoList['Veh_Pos_Long'].length - 1].value:0);
+               
+                for(let latlongindex = 0; latlongindex < this.pageInfoList["Veh_Pos_Latt"].length; latlongindex ++){
+                    this.coordinates.push({lat:parseFloat(this.pageInfoList["Veh_Pos_Latt"][latlongindex].value),long:parseFloat(this.pageInfoList["Veh_Pos_Long"][latlongindex].value)})
+                    
+                }
+                this.lat = this.coordinates[0].lat;
+                this.long = this.coordinates[0].long;
+                
+                console.log(this.coordinates);
             },
             err => {
                 console.log("Error occured." + err)

@@ -115,7 +115,22 @@
 									<app-emission-data-monitor></app-emission-data-monitor>
 								</div>
 								<div *ngIf="viewGeolocation">
-									<agm-map [latitude]="lat" [longitude]="long"></agm-map>
+									<agm-map [latitude]="lat" [longitude]="long" [zoom]="25">
+										 <agm-marker
+									        *ngFor="let coordinate of coordinates let i=index"
+									        [latitude]="coordinate.lat"
+									        [longitude]="coordinate.long"></agm-marker>
+									        
+									      <agm-polyline
+									       [visible]="true"
+									       [strokeWeight]="3">
+									        <agm-polyline-point
+									          *ngFor="let coordinate of coordinates; let i=index"
+									          [latitude]="coordinate.lat"
+									          [longitude]="coordinate.long">
+									        </agm-polyline-point>
+									      </agm-polyline>
+									</agm-map>
 								</div>
 							</td>
 						</tr>

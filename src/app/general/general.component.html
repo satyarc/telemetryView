@@ -22,7 +22,7 @@
 						<b>Odometer Value</b>
 					</td>
 					<td>
-						 {{pageInfoList && (pageInfoList.Odometer_Val.length > 0)?pageInfoList.Odometer_Val[pageInfoList.Odometer_Val.length - 1].value:0}}
+						 {{pageInfoList.Odometer_Val && (pageInfoList.Odometer_Val.length > 0)?pageInfoList.Odometer_Val[pageInfoList.Odometer_Val.length - 1].value:0}}
 					</td>
 				</tr>
 				<tr>
@@ -30,7 +30,7 @@
 						<b>IMEI Number</b>
 					</td>
 					<td>
-						 {{pageInfoList && (pageInfoList.IMEI_number.length > 0)?pageInfoList.IMEI_number[pageInfoList.IMEI_number.length - 1].value:0}}
+						 {{pageInfoList.IMEI_numbe && (pageInfoList.IMEI_number.length > 0)?pageInfoList.IMEI_number[pageInfoList.IMEI_number.length - 1].value:0}}
 					</td>
 				</tr>
 				<tr>
@@ -38,7 +38,7 @@
 						<b>Vehicle VIN</b>
 					</td>
 					<td>
-						 {{pageInfoList && (pageInfoList.Vehicle_VIN.length > 0)?pageInfoList.Vehicle_VIN[pageInfoList.Vehicle_VIN.length - 1].value:0}}
+						 {{pageInfoList.Vehicle_VIN && (pageInfoList.Vehicle_VIN.length > 0)?pageInfoList.Vehicle_VIN[pageInfoList.Vehicle_VIN.length - 1].value:0}}
 					</td>
 				</tr>
 			</table>
