@@ -115,21 +115,27 @@
 									<app-emission-data-monitor></app-emission-data-monitor>
 								</div>
 								<div *ngIf="viewGeolocation">
-									<agm-map [latitude]="lat" [longitude]="long" [zoom]="25">
-										 <agm-marker
-									        *ngFor="let coordinate of coordinates let i=index"
+									<agm-map [latitude]="lat" [longitude]="lng" [zoom]="10">
+									
+										 <!--  
+										 <agm-marker 
+									        *ngFor="let coordinate of distantCoordinates let i=index"
 									        [latitude]="coordinate.lat"
-									        [longitude]="coordinate.long"></agm-marker>
-									        
-									      <agm-polyline
-									       [visible]="true"
-									       [strokeWeight]="3">
-									        <agm-polyline-point
-									          *ngFor="let coordinate of coordinates; let i=index"
-									          [latitude]="coordinate.lat"
-									          [longitude]="coordinate.long">
-									        </agm-polyline-point>
-									      </agm-polyline>
+									        [longitude]="coordinate.lng">
+									      </agm-marker>
+									      -->
+											
+									      <agm-direction
+									      	*ngFor="let coordinate of distantCoordinates let i=index"
+									      	[origin]="coordinate" [destination]="coordinates[i+1]" >
+									      </agm-direction>
+									      
+									      <!--
+										      <agm-direction
+										      	*ngFor="let coordinate of coordinates; let i=index"
+										      	[origin]="coordinate" [destination]="coordinates[i+1]" [travelMode] = "DRIVING">
+										      </agm-direction>
+									      -->
 									</agm-map>
 								</div>
 							</td>

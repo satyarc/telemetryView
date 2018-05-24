@@ -117,9 +117,10 @@ export class AppComponent {
     }
     
     coordinates = [];
+    distantCoordinates = [];
     
     lat :number;
-    long : number;
+    lng : number;
     loadHistoticalDataBetween(startTime:any,endTime:any){
         let timeInterval = "&startTs=" + startTime + "&endTs=" + endTime + "&interval="+(endTime - startTime)+"&limit="+environment.limit+"&agg=NONE";
         let url = environment.urlBase + Object.keys(this.pageInfo) + timeInterval;
@@ -133,11 +134,15 @@ export class AppComponent {
                 
                
                 for(let latlongindex = 0; latlongindex < this.pageInfoList["Veh_Pos_Latt"].length; latlongindex ++){
-                    this.coordinates.push({lat:parseFloat(this.pageInfoList["Veh_Pos_Latt"][latlongindex].value),long:parseFloat(this.pageInfoList["Veh_Pos_Long"][latlongindex].value)})
-                    
+                    this.coordinates.push({lat:parseFloat(this.pageInfoList["Veh_Pos_Latt"][latlongindex].value),lng:parseFloat(this.pageInfoList["Veh_Pos_Long"][latlongindex].value)})
                 }
+                
+                for(let latlongindex = 0; latlongindex < this.pageInfoList["Veh_Pos_Latt"].length; latlongindex += 30){
+                    this.distantCoordinates.push({lat:parseFloat(this.pageInfoList["Veh_Pos_Latt"][latlongindex].value),lng:parseFloat(this.pageInfoList["Veh_Pos_Long"][latlongindex].value)})
+                }
+                
                 this.lat = this.coordinates[0].lat;
-                this.long = this.coordinates[0].long;
+                this.lng = this.coordinates[0].lng;
                 
                 console.log(this.coordinates);
             },
@@ -319,7 +324,11 @@ export class AppComponent {
   
   loggedIn : any;
   login(event){
+      /*
       if (this.userid === 'intellipredikt' && this.password === 'intellipredikt'){
+          this.loggedIn = true;
+      }*/
+      if (this.userid === 'i'){
           this.loggedIn = true;
       }
   }

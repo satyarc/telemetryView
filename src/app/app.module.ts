@@ -8,6 +8,7 @@ import { OwlNativeDateTimeModule, OWL_DATE_TIME_FORMATS  } from 'ng-pick-datetim
 import { Ng2GoogleChartsModule } from 'ng2-google-charts';
 import { Ng2SmartTableModule } from 'ng2-smart-table';
 import { AgmCoreModule } from '@agm/core';
+import { AgmDirectionModule } from 'agm-direction'; 
 
 
 
@@ -53,7 +54,8 @@ import { environment } from '../environments/environment';
     Ng2SmartTableModule,
     AgmCoreModule.forRoot({
         apiKey: environment.apiKey
-      })
+      }),
+    AgmDirectionModule
   ],
   providers: [],
   bootstrap: [AppComponent]
